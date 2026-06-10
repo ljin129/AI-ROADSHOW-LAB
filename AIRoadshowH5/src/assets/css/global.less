@@ -1,0 +1,49 @@
+.f(@direction: row) {
+	display: flex;
+	flex-direction: @direction;
+	align-items: center;
+}
+
+.flex-row {
+	.f(row);
+}
+
+.flex-column {
+	.f(column);
+}
+
+.flex-row-center {
+	.flex-row();
+	justify-content: center;
+}
+
+.flex-column-center {
+	.flex-column;
+	justify-content: center;
+}
+
+.safe(@de: 0) {
+	padding-bottom: calc(@de + constant(safe-area-inset-bottom));
+	padding-bottom: calc(@de + env(safe-area-inset-bottom));
+}
+
+.safe-bottom {
+	// 60 = 底部按钮高度 + 30px 冗余高度
+	.safe(90px);
+}
+
+.pd-safe-12 {
+	.safe(12px);
+}
+
+.pd-safe-25 {
+	padding-bottom: 25px !important;
+}
+
+.no-select {
+	-webkit-user-select: none; /* Chrome, Safari, Opera */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE 10+ */
+	user-select: none; /* 标准语法 */
+	-webkit-touch-callout: none; /* iOS Safari */
+}

@@ -1,0 +1,131 @@
+/* 字号 */
+.fz12 {
+	font-size: 12px;
+}
+
+.fz14 {
+	font-size: 14px;
+}
+
+.fz15 {
+	font-size: 15px;
+}
+
+.fz16 {
+	font-size: 16px;
+}
+
+.fz18 {
+	font-size: 18px;
+}
+
+.fz19 {
+	font-size: 19px;
+}
+
+.fz20 {
+	font-size: 20px;
+}
+
+/* 外间距 */
+.mt10 {
+	margin-top: 10px;
+}
+
+.mt15 {
+	margin-top: 15px;
+}
+
+.mb10 {
+	margin-bottom: 10px;
+}
+
+.mt20 {
+	margin-top: 20px;
+}
+
+.mt25 {
+	margin-top: 20px;
+}
+
+.mt30 {
+	margin-top: 30px;
+}
+
+.mr12 {
+	margin-right: 12px;
+}
+
+/* 内间距 */
+.pt10 {
+	padding-top: 10px;
+}
+
+.pt15 {
+	padding-top: 15px;
+}
+
+.pt20 {
+	padding-top: 20px;
+}
+
+.pt30 {
+	padding-top: 30px;
+}
+
+/* 字体颜色 */
+.color3 {
+	color: #333;
+}
+
+.color6 {
+	color: #666;
+}
+
+.color9 {
+	color: #999;
+}
+
+/* 字体加粗 */
+.fwb {
+	font-weight: bold;
+}
+
+/* 块级flex布局 */
+.flex_block {
+	display: flex;
+}
+
+/* 行内块flex布局 */
+.flex_inline {
+	display: inline-flex;
+}
+
+/* 文字超出一行...代替 */
+.text_ellipsis {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/* 文字超出两行...代替 */
+.text_ellipsis_l2 {
+	display: -webkit-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+/* 一些需要设置font-weight:500字体 */
+.f_family_medium {
+	font-family: PingFangSC-Medium, PingFang SC;
+}
+.pc_page_container {
+	padding-top: 65px;
+}
+
+.pc_container {
+	padding-left: 20% !important;
+	padding-right: 20% !important;
+}

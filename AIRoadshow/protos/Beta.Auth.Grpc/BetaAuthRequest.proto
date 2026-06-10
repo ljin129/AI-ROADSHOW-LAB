@@ -1,0 +1,365 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Beta.Grpc.Auth.Request";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "BetaAuthEnumEntity.proto";
+import "BetaAuthEntity.proto";
+package Beta.Auth;
+
+message RequestSessionId { google.protobuf.StringValue SessionId = 1; }
+message RequestUserId { google.protobuf.StringValue UserId = 1; }
+
+message RequestUserIdCustID {
+  google.protobuf.StringValue UserId = 1;
+  int32 CustCompanyID = 2;
+}
+
+message RequestUnionID {
+  int64 UserId = 1;
+  bool EncryptedPhone = 3;
+}
+
+message RequestUnionIDCustID {
+  int64 UserId = 1;
+  int32 CustCompanyID = 2;
+}
+
+message RequestUnionIDWithFlag {
+  int64 BetaUnionID = 1;
+  FromFlagEnum FromFlag = 2;
+  google.protobuf.StringValue WwCorpId = 3;
+}
+
+message RequestInternalUserID { int32 UserId = 1; }
+
+message RequestInternalUserIDCustID {
+  int32 UserId = 1;
+  int32 CustCompanyID = 2;
+}
+
+message RequestInternalUserIDs {
+  repeated int32 UserIds = 1;
+  int32 CustCompanyID = 2;
+}
+
+message LoginRequest {
+  LoginSvcIDEnum LoginSvcID = 1;
+  google.protobuf.StringValue UserId = 2;
+  google.protobuf.StringValue Password = 3;
+  google.protobuf.StringValue Ip = 4;
+  google.protobuf.StringValue ClientInfo = 5;
+}
+
+message AfterLoginReq{
+	int32 InternalUserID=1;
+	google.protobuf.Int32Value loginSvcID=2;
+}
+
+message CreateSessionReq{
+	string SessionId=1;
+	google.protobuf.StringValue Ip = 2;
+	int32 InternalUserID = 3;
+	google.protobuf.StringValue diskId = 4;
+	google.protobuf.StringValue ClientVersion = 5;
+	LoginSvcIDEnum LoginSvcID = 6;
+}
+
+message RequestCustCompanyID { int32 CustCompanyID = 1; }
+
+message RequestWwCorpId { 
+	google.protobuf.StringValue WwCorpId = 1;
+	google.protobuf.StringValue SuiteId=2; //1037426 同企业多驾驶舱
+}
+
+message RequestInternetId {
+  int64 InternetID = 1;
+  FromFlagEnum FromFlag = 2;
+  google.protobuf.StringValue ExtendTag = 3;
+}
+
+message RequestInternetIds { repeated RequestInternetId Result = 1; }
+
+message RequestInternetIdWithFlag {
+  int64 InternetID = 1;
+  FromFlagEnum FromFlag = 2;
+}
+
+message RequestCustUserIds {
+  int32 CustCompanyID = 1;
+  repeated int32 UserIds = 2;
+}
+
+message RequestCustUserTypeId {
+  int32 CustCompanyID = 1;
+  repeated int32 UserIds = 2;
+  int32 CustUserType = 3;
+}
+
+message RequestRoleCustUserTypeId {
+  int32 CustCompanyID = 1;
+  repeated int32 UserIds = 2;
+  UserDutyEnum UserDuty = 3;
+}
+
+message RequestCustUserVipTypeId {
+  int32 CustCompanyID = 1;
+  repeated int32 UserIds = 2;
+  UserVipTypeEnum VipType = 3;
+  google.protobuf.BoolValue IsBatch = 4;
+}
+
+message RequestCustRoleId {
+  int32 CustCompanyID = 1;
+  UserDutyEnum UserDuty = 2;
+}
+
+message RequestUserWithCorpId {
+  int32 UserId = 1;
+  google.protobuf.StringValue WwCorpId = 2;
+  google.protobuf.StringValue WwSuiteId = 3;
+}
+
+message RequestUnionIdWithWwCorpId {
+  int32 UnionId = 1;
+  google.protobuf.StringValue WwCorpId = 2;
+  google.protobuf.StringValue WwSuiteId = 3;
+}
+
+message RequestExtRoleId {
+  int32 UserId = 1;
+  int32 CustCompanyID = 2;
+  UserDutyEnum UserDuty = 3;
+}
+
+message RequestBadgeTypeRealName {
+  int32 UserId = 1;
+  BadgeTypeEnum BadgeType = 2;
+  google.protobuf.StringValue RealName = 3;
+}
+
+message RequestBetaUnionIdInternetId {
+  int64 BetaUnionID = 1;
+  int64 InternetID = 2;
+  int32 CustCompanyID = 3;
+}
+
+message RequestNoParams {}
+
+message RequestAliAppId { int32 AliAppId = 1; }
+
+message RequestInternalUserIDWithWwCorpId {
+  int32 UserId = 1;
+  google.protobuf.StringValue WwCorpId = 2;
+  google.protobuf.StringValue WwSuiteId = 3;
+}
+
+message RequestCustCompanyIDs { repeated int32 CustCompanyIDs = 1; }
+
+// 员工部门关系同步请求
+message CustUserOrgSyncRequest {
+  string CorpId = 1;                                    // 公司ID
+  map<string, RepeatedCustOrgItem> CustUserOrgList = 2; // 员工部门关系
+  bool FullSync = 3; // 全量同步1，增量同步2，增量同步时，只增改，不删
+}
+
+// 企微部站同步请求
+message CustOrgSyncRequest {
+  string CorpId = 1; // 公司ID
+  map<int64, WWDepInfo> OrgItems = 2;
+  bool FullSync = 3; // 全量同步1，增量同步2，增量同步时，只增改，不删
+  string CorpName = 4; // 用于创建根部门
+}
+message CustOrgItems { repeated CustOrgItem Result = 1; }
+
+message RequstCustWwIds {
+  string WwCorpId = 1;
+  map<string, CustOrgItems> WwIds = 2;
+}
+
+message RequestVipType { UserVipTypeEnum VipType = 1; }
+
+message RequestSessionIdWithIP {
+  google.protobuf.StringValue SessionId = 1;
+  google.protobuf.StringValue Ip = 2;
+}
+
+message RequestReCompany {
+  int32 InternalUserID = 1;
+  bytes RecCompanyType = 2;
+  google.protobuf.StringValue RecCompanyName = 3;
+  int32 RecCompanyID = 4;
+}
+
+message RequestCustCompanyIdInternalUserIdForceAssign {
+  int32 CustCompanyId = 1;
+  int32 InternalUserId = 2;
+  bool ForceAssign = 3;
+}
+
+message SyncRequestInternalUserId { int32 InternalUserId = 1; }
+
+message SyncRequestInternetIds { map<int64, int64> OldNewInternetIds = 1; }
+
+message UpdateInternetIDRequest{ 
+		int64 OldInternetId=1;
+		int64 NewInternetId=2;
+        FromFlagEnum FromFlag = 3;
+        google.protobuf.StringValue ExtendTag=4;
+}
+
+message SyncRequestUserRef { UserRefItem UserRefInfo = 1; }
+
+message SyncRequestCustCompanyIdWithInternalUserIds {
+  int32 CustCompanyId = 1;
+  repeated int32 InternalUserIds = 2;
+}
+
+message SyncRequestCustCompanyId { int32 CustCompanyId = 1; }
+
+message SyncRequestSession { SessionItem SessionInfo = 1; }
+
+message SyncRequestSessionId { string SessionId = 1; }
+
+message SyncRequestrVipPackage {
+  UserVipRefTypeEnum UserVipRefType = 1;
+  int32 RefID = 2;
+}
+
+message SyncRequestIdentityId { string IdentityCardNo = 1; }
+
+message RequestCustCompanyUser {
+  int32 CustCompanyId = 1;
+  int32 InternalUserId = 2;
+  google.protobuf.Int32Value BadgeType = 3;
+  google.protobuf.StringValue RealName = 4;
+  google.protobuf.Int32Value UserDuty = 5;
+  google.protobuf.Int32Value CustUserType = 6;
+}
+
+message RequestCustCompanyLogin {
+  LoginSvcIDEnum loginSvcID = 1;
+  string UserId = 2;
+  string Password = 3;
+  string Ip = 4;
+  string ClientInfo = 5;
+}
+
+message RequestBetaUnionIdsWithCustCompanyId {
+  int32 CustCompanyId = 1;
+  repeated int64 BetaUnionIds = 2;
+}
+
+message RequestEnum { int32 EnumId = 1; }
+
+message RequestAreaCodeAreaID {
+  string AreaCode = 1;
+  int32 AreaID = 2;
+}
+
+message RequestAreaLevel { AreaLevelEnum AreaLevel = 1; }
+
+message RequestUparms { string Uparms = 1; }
+
+message RequestUserRefIDUserRefType {
+  string UserRefID = 1;
+  UserRefTypeEnum UserRefType = 2;
+}
+
+message BatchGetUserByRefIDReq{
+  repeated string UserRefIDs = 1;
+  UserRefTypeEnum UserRefType = 2;
+}
+
+message RequestUserIdRefType {
+  int32 InternalUserId = 1;
+  UserRefTypeEnum UserRefType = 2;
+}
+
+message BatchGetUserRefIDByRefTypeReq {
+  repeated int32 InternalUserId = 1;
+  UserRefTypeEnum UserRefType = 2;
+}
+
+message RequestUserVipTypes { repeated UserVipTypeEnum VipTypes = 1; }
+
+message RequestRelationCustCompany {
+  int32 InternalUserID = 1;
+  int32 CustCompanyID = 2;
+  int32 ModuleID = 3;
+}
+
+message RequestIdAndIdentity {
+  int32 InternalUserId = 1;
+  string IdentityCardNo = 2;
+  string RealName = 3;
+  int32 Verified = 4;
+  bool Closed = 5;
+  IdentityTypeEnum IdentityType=6;
+}
+
+message RequestUnionIDsWithFlag {
+  repeated int64 BetaUnionIDs = 1;
+  FromFlagEnum FromFlag = 2;
+  google.protobuf.StringValue WwCorpId = 3;
+}
+
+message GetUserCustCompanyVipCountExtendCheckStartTimeReq {
+  int32 CustCompanyID = 1;
+  bool IsCheckVipStartTime = 2;
+}
+
+// 设置第三方Id
+message SetCustCompanyTppIdReq {
+  int32 CustCompanyID = 1;
+  google.protobuf.Int32Value AliAppId = 2;
+  google.protobuf.StringValue WwCorpId = 3;
+  google.protobuf.StringValue WxAccountId=4;
+  // 用户与外部用户ID关系枚举
+  UserRefTypeEnum UserRefType = 5;
+  // 微信授权类型
+  WxAuthTypeEnum WxAuthType = 6;
+}
+
+// 设置UserRefType
+message SetCustCompanyUserRefTypeReq{
+	int32 CustCompanyID = 1;
+	google.protobuf.Int32Value UserRefType=2;
+}
+
+//根据关联驾驶舱获取驾驶舱 请求
+message GetCustCompanyIDByRelationCustCompanyIDReq{
+	int32 RelationCustCompanyID = 1;
+}
+
+//识别小程序码，开通VIP和更新公司绑定关系
+message UpdateCustCompanyForAppReq{
+	int32 InternalUserID=1;
+	int32 OrgID=2;
+}
+
+// 更新企微场景CustCompany
+message UpdateCustCompanyForWxWorkReq{
+	int32 InternalUserID=1;
+	google.protobuf.StringValue WwCorpId=2;
+	google.protobuf.StringValue WwUserId=3;
+	bool IsChangeUserCompany=4;
+	google.protobuf.StringValue SuiteId=5; //1037426 同企业多驾驶舱
+}
+
+// 更新企业微信公司购买的VIP信息
+message UpdateWxCustCompanyVipInfoReq{
+	string WwCorpId=1;
+	string SuiteId=2;
+	int32 WwAppStatus=3;
+	int32 WwUserLimit=4;
+	google.protobuf.Timestamp WwExpiredTime=5;
+}
+
+message DeleteCustUserOrgByOIDsReq{
+	map<int32,int32> oidUserIds=1;
+	string CorpId=2;
+	string SuiteId=3;
+}

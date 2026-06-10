@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>$(NetVersion)</TargetFramework>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Beta.Framework" Version="$(BetaFrameworkVersion)" />
+		<PackageReference Include="Beta.RedisExtensions.StackExchangeExt" Version="1.0.0.5" />
+		<PackageReference Include="AutoMapper" Version="$(AutoMapperVersion)" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="$(AutoMapperVersion)" />
+		<PackageReference Include="Grpc.Tools" Version="$(GrpcToolsVersion)" PrivateAssets="All" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Beta.AIRoadshow.Common\Beta.AIRoadshow.Common.csproj" />
+		<ProjectReference Include="..\Beta.AIRoadshow.DataAccess\Beta.AIRoadshow.DataAccess.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="..\protos\Beta.Serial\*.proto" Generator="MSBuild:Compile" GrpcServices="Client" OutputDir="$(Protobuf_OutputPath)%(RelativeDir)" />
+		<Protobuf Include="..\protos\Beta.Auth.Grpc\*.proto" Generator="MSBuild:Compile" GrpcServices="Client" OutputDir="$(Protobuf_OutputPath)%(RelativeDir)" />
+	</ItemGroup>
+</Project>

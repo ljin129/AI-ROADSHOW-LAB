@@ -1,0 +1,2023 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Beta.Grpc.Auth.Entity";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "BetaAuthEnumEntity.proto";
+
+package Beta.Auth;
+
+// Common
+enum ResultCodeEnums {
+  None = 0;
+  OK = 200;
+  Warning = 300;
+  Error = 400;
+  Exception = 500;
+}
+
+message BaseResult {
+  ResultCodeEnums Code = 1;
+  string Message = 2;
+}
+
+message Pagination {
+  int32 pageSize = 1;
+  int32 pageIndex = 2;
+}
+
+// 批量Int32Id
+message Int32Ids { repeated int32 ids = 1; }
+
+message IntKVCount {
+  int32 K = 1;
+  string V = 2;
+  int32 C = 3;
+}
+
+message UserSimpleInfoItem {
+  // 内部用户ID
+  int32 InternalUserID = 1;
+  // Beta理财师后台管理的用户角色
+  int32 UserDuty = 2;
+  // 用户类型
+  CustUserTypeEnum CustUserType = 3;
+}
+
+message UserInfoItem {
+
+  // 内部用户ID
+  int32 InternalUserID = 1;
+
+  // 加密的内部用户ID
+  google.protobuf.StringValue InternalUserIDEnc = 2;
+
+  // 用户ID
+  google.protobuf.StringValue UserId = 3;
+
+  // 全局唯一用户ID
+  int64 BetaUnionID = 4;
+
+  // 用户密码
+  google.protobuf.StringValue Password = 5;
+
+  // 客户端摘要信息，含用户机器信息，作为后续处理参数
+  google.protobuf.StringValue DiskID = 6;
+
+  // 用户姓名
+  google.protobuf.StringValue UserName = 7;
+
+  // 用户邮件地址
+  google.protobuf.StringValue UserEmail = 8;
+
+  // 用户所在公司
+  google.protobuf.StringValue UserCompany = 9;
+
+  // 用户所在公司ID
+  int32 UserCompanyID = 10;
+
+  // 用户电话号码
+  google.protobuf.StringValue UserPhone = 11;
+
+  // 用户手机号码
+  google.protobuf.StringValue UserCellPhone = 12;
+
+  // 用户类型
+  UserTypeEnum UserType = 13;
+
+  // 账号状态
+  UserEnableEnum UserEnable = 14;
+
+  // VIP账号状态
+  UserStatusEnum UserStatus = 15;
+
+  // 用户所属公司关联1001表的集团机构ID，主要用于本行代销
+  int32 RelatedInstitutionID = 16;
+
+  // 用户头像，完整url路径，直接可用，缩略图
+  google.protobuf.StringValue UserPhoto = 17;
+
+  // 用户头像，完整url路径，直接可用，原始大图
+  google.protobuf.StringValue UserPhotoInit = 18;
+
+  // 用户名片形象照，完整url路径，直接可用
+  google.protobuf.StringValue UserCardPhoto = 19;
+
+  // 用户二维码图片，完整url路径，直接可用
+  google.protobuf.StringValue UserQRCode = 20;
+
+  // 客户经理ID
+  int32 SalesUserID = 21;
+
+  // 微信用户ID
+  google.protobuf.StringValue WeixinUserID = 22;
+
+  // 微信是否核对过用户信息
+  bool WeixinIsCheckInfo = 23;
+
+  // 联系人ID
+  int32 ContactUserID = 24;
+
+  // 性别
+  SexEnum UserSex = 25;
+
+  // 部门/支行ID
+  int32 DeptID = 26;
+
+  // 部门/支行
+  google.protobuf.StringValue DeptName = 27;
+
+  // 网点ID
+  int32 BranchID = 28;
+
+  // 网点
+  google.protobuf.StringValue BranchName = 29;
+
+  // 到期时间
+  google.protobuf.Timestamp RightItemEndDate = 30;
+
+  // 激活时间
+  google.protobuf.Timestamp ActivationTime = 31;
+
+  // 是否填写过个人信息
+  bool IsCheckInfo = 32;
+
+  // 是否校验过手机号
+  bool IsCellPhoneCheck = 33;
+
+  // 交易权限标志，0表示没有交易权限，1表示有交易权限
+  int32 TradeFlag = 34;
+
+  // 佣金权限标志，0表示没有佣金权限，1表示有佣金权限
+  int32 TradeFeeFlag = 35;
+
+  // 所在地区ID
+  int32 AreaID = 36;
+
+  // 工作所在地区，包含完整的信息，包括城市所在的省份
+  AreaItem WorkArea = 37;
+
+  // 工作所在地区ID
+  int32 WorkAreaID = 38;
+
+  // 工作所在地区名称
+  google.protobuf.StringValue WorkAreaName = 39;
+
+  // 用户填写的所在公司
+  google.protobuf.StringValue UserCompanyAlias = 40;
+
+  // 用户职务
+  google.protobuf.StringValue UserPosition = 41;
+
+  // 微店名称，GetUserForShop才有该字段
+  google.protobuf.StringValue ShopName = 42;
+
+  // 自我介绍，GetUserForShop才有该字段
+  google.protobuf.StringValue Introduction = 43;
+
+  // 微信账号，GetUserForShop才有该字段
+  google.protobuf.StringValue WeixinAccount = 44;
+
+  // 参加工作时间，GetUserForShop才有该字段
+  google.protobuf.Timestamp WorkBegin = 45;
+
+  // 工作经历，GetUserForShop才有该字段
+  repeated WorkItem WorkList = 46;
+
+  // 教育经历，GetUserForShop才有该字段
+  repeated EducationItem EducationList = 47;
+
+  // 证书，GetUserForShop才有该字段
+  repeated CertificateItem CertificateList = 48;
+
+  // 理财师评分，GetUserExt方法才有该字段
+  double UserRating = 49;
+
+  // 实名认证状态，GetUserExt方法才有该字段
+  IDCardCheckStatusEnum IDCardCheckStatus = 50;
+
+  // 公司地址
+  google.protobuf.StringValue CompanyAddress = 51;
+
+  // VIP收费版开始时间
+  google.protobuf.Timestamp UserVipStartTime = 52;
+
+  // VIP收费版过期时间
+  google.protobuf.Timestamp UserVipExpiryTime = 53;
+
+  // VIP类型
+  UserVipTypeEnum UserVipType = 54;
+
+  // 用户总vip权限类型
+  map<int32, VipItem> UserVipItems = 55;
+
+  // 是否VIP收费版
+  bool IsUserVip = 56;
+
+  // 名片样式
+  BusinessCardStyleEnum BusinessCardStyle = 57;
+
+  // BETA理财师管理后台公司ID
+  int32 CustCompanyID = 58;
+
+  // 理财师推荐号
+  google.protobuf.StringValue RecommendCode = 59;
+
+  // 名片小店外部链接
+  google.protobuf.StringValue CardShopUrl = 60;
+
+  // 功能权限，按位运算
+  FuncPermissionEnum FuncPermission = 61;
+
+  // 徽章类型
+  BadgeTypeEnum BadgeType = 62;
+
+  // 创建时间
+  google.protobuf.Timestamp RPGenDatetime = 63;
+
+  // 真实姓名
+  google.protobuf.StringValue RealName = 64;
+
+  // Beta理财师后台管理的用户角色
+  int32 UserDuty = 65;
+
+  // 用户个人vip权限类型
+  UserVipTypeEnum PersonalVipType = 66;
+
+  // 用户驾驶舱vip权限类型
+  UserVipTypeEnum CustVipType = 67;
+
+  // APP，如Beta理财师和查私募app
+  AppTypeEnum AppType = 68;
+
+  // 保留驾驶舱
+  google.protobuf.Int32Value CustCompanyIDStay = 69;
+
+  // 账号登录过的APP：个位表示Beta理财师，十位表示查私募，百位表示上善SSFC，千位表示保险app，如1111表示都登录过
+  int32 LoginAPP = 70;
+
+  // 用户所在网点
+  google.protobuf.StringValue UserBranch = 71;
+
+  // 用户身份id
+  int32 VerifyIdentityId = 72;
+
+  // 先使用的手机号
+  google.protobuf.StringValue DisplayPhoneNumber=73;
+}
+message SimpleUserItem {
+
+  // 内部用户ID
+  int32 InternalUserID = 1;
+
+  // 用户ID
+  google.protobuf.StringValue UserId = 2;
+
+  // 用户姓名
+  google.protobuf.StringValue UserName = 3;
+
+  // 用户邮件地址
+  google.protobuf.StringValue UserEmail = 4;
+
+  // 用户所在公司
+  google.protobuf.StringValue UserCompany = 5;
+
+  // 用户所在公司ID
+  int32 UserCompanyID = 6;
+
+  // 用户电话号码
+  google.protobuf.StringValue UserPhone = 7;
+
+  // 用户手机号码
+  google.protobuf.StringValue UserCellPhone = 8;
+
+  // 用户手机号码，临时兼容安卓问题使用的
+  // google.protobuf.StringValue UserMPhone { get { return this.UserCellPhone; }
+  // }
+  google.protobuf.StringValue UserMPhone = 9;
+
+  // 用户头像，完整url路径，直接可用，缩略图
+  google.protobuf.StringValue UserPhoto = 10;
+
+  // 用户头像，完整url路径，直接可用，原始大图
+  google.protobuf.StringValue UserPhotoInit = 11;
+
+  // 用户名片形象照，完整url路径，直接可用
+  google.protobuf.StringValue UserCardPhoto = 12;
+
+  // 用户填写的所在公司
+  google.protobuf.StringValue UserCompanyAlias = 13;
+
+  // 用户职务
+  google.protobuf.StringValue UserPosition = 14;
+
+  // 自我介绍，GetUserForShop才有该字段
+  google.protobuf.StringValue Introduction = 15;
+
+  // 理财师评分，GetUserExt方法才有该字段
+  double UserRating = 16;
+
+  // 实名认证状态，GetUserExt方法才有该字段
+  IDCardCheckStatusEnum IDCardCheckStatus = 17;
+
+  // 收费版过期时间
+  google.protobuf.Timestamp UserVipExpiryTime = 18;
+
+  // 是否收费版
+  bool IsUserVip = 19;
+
+  // 功能权限，按位运算
+  FuncPermissionEnum FuncPermission = 20;
+
+  // 机构专区名称
+  google.protobuf.StringValue CompanyRegion = 21;
+
+  // 机构专区名称
+  google.protobuf.StringValue AuthCompanyRegion = 22;
+}
+
+message UserForExternalItem {
+
+  // 内部用户ID
+  int32 InternalUserID = 1;
+
+  // 全局用户ID
+  int64 BetaUnionID = 2;
+
+  // 用户姓名
+  google.protobuf.StringValue UserName = 3;
+
+  // 用户手机号码
+  google.protobuf.StringValue UserCellPhone = 4;
+}
+
+message VipItem {
+
+  // 用户VIP关联类型，机构还是个人
+  UserVipRefTypeEnum RefType = 1;
+
+  // 用户VIP关联ID
+  int32 RefID = 2;
+
+  // VIP类型
+  UserVipTypeEnum VipType = 3;
+
+  // 收费版开始时间
+  google.protobuf.Timestamp StartTime = 4;
+
+  // 收费版过期时间
+  google.protobuf.Timestamp ExpiryTime = 5;
+
+  // 是否收费版
+  bool IsVip = 6;
+
+  // 是否收费版体验
+  bool IsVipExp = 7;
+}
+
+
+//基础对象
+message VIPItemLite{
+// 用户VIP关联类型，机构还是个人
+  UserVipRefTypeEnum RefType = 1;
+
+  // 用户VIP关联ID
+  int32 RefID = 2;
+
+  // VIP类型
+  UserVipTypeEnum VipType = 3;
+
+  // VIP开始时间
+  google.protobuf.Timestamp VipStartTime = 4;
+
+  // VIP过期时间
+  google.protobuf.Timestamp VipExpiryTime = 5;
+}
+
+message AreaItem {
+
+  // 地区ID
+  int32 AreaID = 1;
+
+  // 地区CODE
+  google.protobuf.StringValue AreaCode = 2;
+
+  // 省份ID，缓存里没有该值，只在特定接口有
+  int32 ProvID = 3;
+
+  // 省份
+  google.protobuf.StringValue ProvName = 4;
+
+  // 城市
+  google.protobuf.StringValue CityName = 5;
+
+  // 县
+  google.protobuf.StringValue CountyName = 6;
+
+  // CODE层级
+  google.protobuf.StringValue CodeLevel = 7;
+
+  // 拼音
+  google.protobuf.StringValue CountyNamePY = 8;
+}
+
+message WorkItem {
+
+  // 工作经历ID
+  int32 WorkID = 1;
+
+  // 内部用户ID
+  int32 InternalUserID = 2;
+
+  // 公司名称
+  google.protobuf.StringValue CompanyName = 3;
+
+  // 职位
+  google.protobuf.StringValue Position = 4;
+
+  // 开始时间
+  google.protobuf.Timestamp WorkStart = 5;
+
+  // 结束时间
+  google.protobuf.Timestamp WorkEnd = 6;
+
+  // 更新时间
+  google.protobuf.Timestamp UpdateTime = 7;
+}
+
+message EducationItem {
+
+  // 教育经历ID
+  int32 EducationID = 1;
+
+  // 内部用户ID
+  int32 InternalUserID = 2;
+
+  // 学校
+  google.protobuf.StringValue School = 3;
+
+  // 专业
+  google.protobuf.StringValue Profession = 4;
+
+  // 学历
+  int32 Degree = 5;
+
+  // 学历名称
+  google.protobuf.StringValue DegreeName = 6;
+
+  // 入学时间
+  google.protobuf.Timestamp EnrollmentTime = 7;
+
+  // 毕业时间
+  google.protobuf.Timestamp GraduationTime = 8;
+
+  // 更新时间
+  google.protobuf.Timestamp UpdateTime = 9;
+}
+
+message CertificateItem {
+
+  // 证书ID
+  int32 CertificateID = 1;
+
+  // 内部用户ID
+  int32 InternalUserID = 2;
+
+  // 证书类型
+  int32 CertificateType = 3;
+
+  // 证书类型名称
+  google.protobuf.StringValue CertificateTypeName = 4;
+
+  // 证书类型图标
+  google.protobuf.StringValue CertificateTypeIcon = 5;
+
+  // 证书编号
+  google.protobuf.StringValue CertificateNO = 6;
+
+  // 证书图片
+  google.protobuf.StringValue CertificateImage = 7;
+
+  // 更新时间
+  google.protobuf.Timestamp UpdateTime = 8;
+}
+
+message BankCardItem {
+
+  // 银行卡ID
+  int32 BankCardID = 1;
+
+  // 内部用户ID
+  int32 InternalUserID = 2;
+
+  // 银行名称
+  google.protobuf.StringValue BankName = 3;
+
+  // 银行全称
+  google.protobuf.StringValue BankFullName = 4;
+
+  // 银行代码
+  google.protobuf.StringValue BankCode = 5;
+
+  // 支行名称
+  google.protobuf.StringValue BankSubBranch = 6;
+
+  // 银行卡号
+  google.protobuf.StringValue BankNo = 7;
+
+  // 卡主姓名
+  google.protobuf.StringValue BankUserName = 8;
+
+  // 银行卡预留手机
+  google.protobuf.StringValue BankUserCellPhone = 9;
+
+  // 卡主身份证号
+  google.protobuf.StringValue BankUserIDCard = 10;
+
+  // 是否默认银行卡
+  bool IsDefault = 11;
+
+  // 更新时间
+  google.protobuf.Timestamp UpdateTime = 12;
+}
+
+message UserExtInfoItem {
+
+  // 内部用户ID
+  int32 InternalUserID = 1;
+
+  // 服务模式，详见ServiceModeEnum枚举
+  ServiceModeEnum ServiceMode = 2;
+
+  // 服务模式修改时间
+  google.protobuf.Timestamp ServiceModeChangeTime = 3;
+
+  // 名片
+  google.protobuf.StringValue BusinessCard = 4;
+
+  // 名片完整路径
+  google.protobuf.StringValue BusinessCardFullPath = 5;
+
+  // 店铺名称
+  google.protobuf.StringValue ShopName = 6;
+
+  // 自我介绍
+  google.protobuf.StringValue Introduction = 7;
+
+  // 参加工作时间
+  google.protobuf.Timestamp WorkBegin = 8;
+
+  // 信息审核状态
+  InfoStatusEnum InfoStatus = 9;
+
+  // 信息审核备注信息
+  google.protobuf.StringValue InfoCheckMemo = 10;
+
+  // 当前用户积分
+  int32 CreditScore = 11;
+
+  // 微信账号
+  google.protobuf.StringValue WeixinAccount = 12;
+
+  // 理财师评分
+  double UserRating = 13;
+
+  // 理财师评分排名
+  int32 UserRatingRank = 14;
+
+  // 是否显示理财师评分
+  bool IsShowScore = 15;
+
+  // 推荐公司类型
+  int32 RecCompanyType = 16;
+
+  // 推荐公司名称
+  google.protobuf.StringValue RecCompanyName = 17;
+
+  // 推荐公司ID
+  int32 RecCompanyID = 18;
+
+  // Beta理财师后台管理的公司ID
+  int32 CustCompanyID = 19;
+
+  // Beta理财师后台管理的公司名称
+  google.protobuf.StringValue CustCompanyName = 20;
+
+  // Beta理财师后台管理的用户状态
+  CustUserStatusEnum CustUserStatus = 21;
+
+  // Beta理财师后台管理的用户角色
+  UserDutyEnum UserDuty = 22;
+
+  // 真实名称
+  google.protobuf.StringValue RealName = 23;
+
+  // 员工工号
+  google.protobuf.StringValue EmployeeNO = 24;
+
+  // 徽章类型
+  BadgeTypeEnum BadgeType = 25;
+
+  int32 CurrentCustCompanyId = 26;
+}
+
+message AuthUserInfoItem {
+  int32 InternalUserID = 1;
+  google.protobuf.StringValue UserID = 2;
+  google.protobuf.StringValue UserName = 3;
+  UserEnableEnum UserEnable = 4;
+  google.protobuf.StringValue UserCellPhone = 5;
+  google.protobuf.StringValue UserCompany = 6;
+  google.protobuf.StringValue IMUserID = 7;
+  int64 CompanyUnionID = 8;
+  bool IsInteriorUser = 9;
+}
+message ServiceNodeItem {
+  google.protobuf.StringValue ServiceName = 1;
+  google.protobuf.StringValue Address = 2;
+  google.protobuf.StringValue IP = 3;
+  google.protobuf.StringValue Port = 4;
+}
+message AuthFuncItem {
+  int32 ID = 1;
+  google.protobuf.StringValue FuncID = 2;
+  google.protobuf.StringValue FuncName = 3;
+  google.protobuf.Timestamp ValidDateFrom = 4;
+  google.protobuf.Timestamp ValidDateTo = 5;
+}
+message AuthModuleItem {
+  int32 ID = 1;
+  google.protobuf.StringValue ModuleID = 2;
+  google.protobuf.StringValue ModuleName = 3;
+  google.protobuf.Timestamp ValidDateFrom = 4;
+  google.protobuf.Timestamp ValidDateTo = 5;
+}
+message AuthSecItem {
+  google.protobuf.StringValue BetaCode = 1;
+  google.protobuf.StringValue SecName = 2;
+  google.protobuf.StringValue SecType = 3;
+  google.protobuf.Timestamp ValidDateFrom = 4;
+  google.protobuf.Timestamp ValidDateTo = 5;
+}
+
+message CustCompanyItem {
+
+  // CustCompanyID
+  google.protobuf.Int32Value CustCompanyID = 1;
+
+  // 公司名称
+  google.protobuf.StringValue CompanyName = 2;
+
+  // 备注
+  google.protobuf.StringValue CompanyDesc = 3;
+
+  // 对应原始CRM公司ID
+  google.protobuf.Int32Value CompanyID = 4;
+
+  // 状态
+  CompanyStatusEnum CompanyStatus = 5;
+
+  // 合同开始时间
+  google.protobuf.Timestamp ContractStart = 6;
+
+  // 合同截止时间
+  google.protobuf.Timestamp ContractEnd = 7;
+
+  // 最大可用数量
+  google.protobuf.Int32Value UserCount = 8;
+
+  // 已经使用数量
+  google.protobuf.Int32Value HadUseCount = 9;
+
+  // 企业微信公司ID
+  google.protobuf.StringValue WwCorpId = 10;
+
+  // 阿里云api网关授权应用ID
+  int32 AliAppId = 11;
+
+  // 用户与外部用户ID关系枚举
+  UserRefTypeEnum UserRefType = 12;
+
+  // VIP类型
+  UserVipTypeEnum UserVipType = 13;
+
+  // 微信公众号ID
+  google.protobuf.StringValue WxAccountID = 14;
+
+  // 微信授权类型
+  WxAuthTypeEnum WxAuthType = 15;
+
+  // 自动开通VIP的策略，0为手动，1为自动开通-先到先得
+  int32 VipManageStrategy = 16;
+
+  // 创建时间
+  google.protobuf.Timestamp RPGenDatetime = 17;
+
+  // 管理驾驶舱类型:0-未知|1-普通管理驾驶舱|2-总管理驾驶舱
+  int32 CustCompanyType = 18;
+
+  // 应用Id
+  google.protobuf.StringValue SuiteId=19;
+
+  // 是否默认应用
+  google.protobuf.Int32Value IsDefault=20;
+}
+
+message CustUserOrgItem {
+
+  // OID
+  google.protobuf.Int32Value OID = 1;
+
+  // OrgID
+  google.protobuf.Int32Value OrgID = 2;
+
+  // cid
+  google.protobuf.Int32Value UserID = 3;
+
+  // 企业微信员工ID
+  google.protobuf.StringValue WwUserId = 4;
+
+  // 更新时间
+  google.protobuf.Timestamp UpdateTime = 5;
+
+  // 排序
+  google.protobuf.Int64Value OrderNum = 6;
+
+  // 机构名称
+  google.protobuf.StringValue OrgName = 7;
+}
+
+// 用户驾驶舱vip分配关系
+message UserCustCompanyItem {
+
+  // 驾驶舱id
+  int32 CustCompanyID = 1;
+
+  // 用户id
+  int32 InternalUserID = 2;
+
+  // 状态，是否管理驾驶舱可见（0无效，1可见，2Vip到期失效）
+  int32 State = 3;
+
+  // vip类型
+  UserVipTypeEnum VipType = 4;
+
+  // 更新时间
+  google.protobuf.Timestamp UpdateTime = 5;
+
+  // 生产时间
+  google.protobuf.Timestamp RP_GenDatetime = 6;
+
+  // 用户类型
+  CustUserTypeEnum CustUserType = 7;
+
+  // 用户状态
+  CustUserStatusEnum CustUserStatus = 8;
+
+  // 用户角色
+  UserDutyEnum UserDuty = 9;
+
+  // 创建时间
+  google.protobuf.Timestamp CreateTime = 10;
+}
+
+message SessionItem {
+
+  // 会话ID
+  google.protobuf.StringValue SessionId = 1;
+
+  // 客户IP地址
+  google.protobuf.StringValue IP = 2;
+
+  // 最近一次访问时间
+  google.protobuf.Timestamp LastAccess = 3;
+
+  // 用户基本信息
+  UserInfoItem UserInfo = 4;
+
+  // 终端版本信息
+  google.protobuf.StringValue ClientVersion = 5;
+
+  // 登录的设备平台
+  LoginSvcIDEnum LoginSvcID = 6;
+}
+message UserRefItem {
+
+  // 用户ID
+  int32 InternalUserID = 1;
+
+  // 外部用户ID
+  google.protobuf.StringValue UserRefID = 2;
+
+  // 外部ID枚举
+  UserRefTypeEnum UserRefType = 3;
+
+  // 外部用户原始数据
+  google.protobuf.StringValue UserRefData = 4;
+
+  // 驾驶舱ID
+  google.protobuf.StringValue CustCompanyID = 5;
+
+  // 更新时间
+  google.protobuf.Timestamp UpdateTime = 6;
+}
+
+message CompanyItem {
+  // 公司ID
+  int32 CompanyID = 1;
+  // 公司名称
+  google.protobuf.StringValue CompanyName = 2;
+  // 父公司ID
+  int32 ParentCompanyID = 3;
+  // 集团机构ID
+  int32 RelatedInstitutionID = 4;
+  // 地区ID
+  int32 AreaID = 5;
+  // 是否集团
+  bool IsGroup = 6;
+  // 行政级别   0:其他  1：总部 2：一级分行 3：二级分行 4：支行
+  int32 ExecutiveLevel = 7;
+}
+
+message CreditFlowItem {
+
+  // 自增长ID
+  int32 OID = 1;
+
+  // 用户内部ID
+  int32 InternalUserID = 2;
+
+  // 积分ID
+
+  int32 CreditID = 3;
+
+  // 积分变化时间
+
+  google.protobuf.Timestamp CreditDateTime = 4;
+
+  // 积分数量
+
+  int32 CreditScore = 5;
+
+  // 积分说明
+
+  google.protobuf.StringValue CreditDesc = 6;
+
+  // 外部ID
+
+  int32 RefID = 7;
+
+  // 是否兑换过积分，扩展字段，特定场景使用
+
+  bool IsHadExchange = 8;
+}
+
+message CreditItem {
+
+  // 积分ID
+
+  int32 CreditID = 1;
+
+  // 积分名称
+
+  google.protobuf.StringValue CreditName = 2;
+
+  // 积分类型
+
+  int32 CreditType = 3;
+
+  // 积分
+
+  int32 CreditScore = 4;
+
+  // 积分日限额
+
+  int32 CreditScoreLimitDay = 5;
+
+  // 积分月限额
+
+  int32 CreditScoreLimitMonth = 6;
+
+  // 积分限制次数
+
+  int32 CreditScoreLimitCount = 7;
+
+  // 积分说明
+
+  google.protobuf.StringValue CreditDesc = 8;
+
+  // 状态
+
+  bool Status = 9;
+}
+
+message CustOrgItem {
+
+  // OrgID
+
+  google.protobuf.Int32Value OrgID = 1;
+
+  // 机构名称
+
+  google.protobuf.StringValue OrgName = 2;
+
+  // 备注
+
+  google.protobuf.StringValue OrgDesc = 3;
+
+  // 上级父节点部门
+
+  google.protobuf.Int32Value ParentOrgID = 4;
+
+  // 是否虚拟部门
+
+  google.protobuf.BoolValue IsVirtual = 5;
+
+  // 管理驾驶舱部门类型
+
+  OrgTypeEnum OrgType = 6;
+
+  // 更新时间
+
+  google.protobuf.Timestamp UpdateTime = 7;
+
+  // 管理驾驶舱ID
+
+  google.protobuf.Int32Value CustCompanyID = 8;
+
+  // 企业微信部门ID
+
+  google.protobuf.Int64Value WwDeptId = 9;
+
+  // 排序
+
+  google.protobuf.Int64Value OrderNum = 10;
+
+  // 外部部门ID
+
+  google.protobuf.StringValue ExternalOrgID = 11;
+
+  // 子部门
+
+  // List<CustOrgItem> SubOrg;
+}
+
+// 部门和驾驶舱关系
+
+message DeptRelationCompanyItem {
+
+  // 驾驶舱ID
+
+  int32 CustCompanyID = 1;
+
+  // 部门ID
+
+  int32 OrgID = 2;
+
+  // 企业微信部门ID
+
+  int64 WwDeptId = 3;
+
+  // 关联驾驶舱ID
+
+  int32 RelationCustCompanyID = 4;
+
+  // 相关权限
+
+  int32 CustCompanyFlag = 5;
+
+  // 相关模块，0-无，1-早报，2-小店装修
+
+  CustCompanyModuleEnum CustCompanyModule = 6;
+}
+
+// 优惠码信息结构体
+
+message DiscountItem {
+
+  // 优惠码
+
+  google.protobuf.StringValue DiscountCode = 1;
+
+  // 内部用户ID
+
+  int32 InternalUserID = 2;
+
+  // 购买1年优惠后价格
+
+  double Price1Year = 3;
+
+  // 购买2年优惠后价格
+
+  double Price2Year = 4;
+
+  // 过期时间
+
+  google.protobuf.Timestamp ExpiryTime = 5;
+
+  // 最多可使用次数
+
+  int32 Amount = 6;
+
+  // 已经使用次数
+
+  int32 UseNum = 7;
+
+  // 状态
+
+  DiscountCodeStatusEnum CodeStatus = 8;
+
+  // VIP类型
+
+  UserVipTypeEnum UserVipType = 9;
+
+  // 更新时间
+
+  google.protobuf.Timestamp RPGenDatetime = 10;
+}
+
+// 优惠码使用信息结构体
+
+message DiscountUsageItem {
+
+  // ID
+
+  int32 ObjectID = 1;
+
+  // 内部用户ID
+
+  int32 InternalUserID = 2;
+
+  // 优惠码
+
+  google.protobuf.StringValue DiscountCode = 3;
+
+  // 订单号
+
+  google.protobuf.StringValue OutTradeNo = 4;
+
+  // 优惠码使用场景
+
+  DiscountUseKindEnum UseKind = 5;
+
+  // 更新时间
+
+  google.protobuf.Timestamp RPGenDatetime = 6;
+}
+
+message EContractInfo {
+  int32 RecId = 1;
+
+  google.protobuf.StringValue ContractId = 2;
+
+  google.protobuf.StringValue Title = 3;
+
+  google.protobuf.StringValue DownloadUrl = 4;
+
+  google.protobuf.StringValue ViewUrl = 5;
+
+  int32 Status = 6;
+
+  google.protobuf.StringValue StatusMsg = 7;
+
+  google.protobuf.Timestamp CreateTime = 8;
+}
+
+// 用户快递地址信息
+
+message ExpressAddressItem {
+
+  // 快递地址ID
+
+  int32 ExpressAddressID = 1;
+
+  // 内部用户ID
+
+  int32 InternalUserID = 2;
+
+  // 收件人姓名
+
+  google.protobuf.StringValue ReceiveName = 3;
+
+  // 收件人手机
+
+  google.protobuf.StringValue ReceiveMPhone = 4;
+
+  // 省份ID
+
+  int32 ProvinceAreaID = 5;
+
+  // 省份名称
+
+  google.protobuf.StringValue ProvinceAreaName = 6;
+
+  // 城市ID
+
+  int32 CityAreaID = 7;
+
+  // 城市名称
+
+  google.protobuf.StringValue CityAreaName = 8;
+
+  // 县区ID
+
+  int32 CountyAreaID = 9;
+
+  // 县区名称
+
+  google.protobuf.StringValue CountyAreaName = 10;
+
+  // 街道或路信息
+
+  google.protobuf.StringValue RoadInfo = 11;
+
+  // 几号几室
+
+  google.protobuf.StringValue RoomInfo = 12;
+
+  // 是否默认银行卡
+
+  bool IsDefault = 13;
+
+  // 更新时间
+
+  google.protobuf.Timestamp UpdateTime = 14;
+}
+
+// 功能信息结构体，一个功能包含多个模块
+
+message FunctionItem {
+
+  // 功能ID
+
+  int32 FuncID = 1;
+
+  // 功能英文名
+
+  google.protobuf.StringValue FuncNameEN = 2;
+
+  // 功能中文名
+
+  google.protobuf.StringValue FuncNameCN = 3;
+
+  // 功能类型
+
+  FuncTypeEnum FuncType = 4;
+}
+
+// 人物身份信息结构体
+
+message GlobalIdentityItem {
+
+  // 人物身份ID
+
+  int32 GlobalIdentityId = 1;
+
+  // 身份证号
+
+  google.protobuf.StringValue IdentityCardNo = 2;
+
+  // 证件类型
+
+  IdentityTypeEnum IdentityType = 3;
+
+  // 身份证姓名
+
+  google.protobuf.StringValue IdentityName = 4;
+
+  // 身份证正面照片
+
+  google.protobuf.StringValue IdentityFrontImg = 5;
+
+  // 身份证反面照片
+
+  google.protobuf.StringValue IdentityBackImg = 6;
+
+  // 是否可用
+
+  bool IsValid = 7;
+
+  // 修改时间
+
+  google.protobuf.Timestamp RPGenDatetime = 8;
+
+  // 0-未审核，1-审核通过，2-审核未通过
+  int32 Verified = 9;
+}
+
+// 分组配置信息结构体
+
+message GroupConfigItem {
+
+  // 分组配置ID
+
+  int32 GroupConfigID = 1;
+
+  // 分组ID
+
+  int32 GroupID = 2;
+
+  // 配置键
+
+  google.protobuf.StringValue GroupConfigName = 3;
+
+  // 配置类型
+
+  GroupConfigTypeEnum GroupConfigType = 4;
+
+  // 配置值
+
+  google.protobuf.StringValue GroupConfigValue = 5;
+
+  // 配置值别称
+
+  google.protobuf.StringValue GroupConfigValueAlias = 6;
+}
+
+// 分组信息结构体
+
+message GroupItem {
+
+  // 分组ID
+
+  int32 GroupID = 1;
+
+  // 分组名称
+
+  google.protobuf.StringValue GroupName = 2;
+
+  // 分组说明
+
+  google.protobuf.StringValue GroupDesc = 3;
+
+  // 分组排序
+
+  int32 GroupIndex = 4;
+
+  // 父分组ID
+
+  int32 ParentGroupID = 5;
+}
+
+// 荣誉信息结构体
+
+message HonorItem {
+
+  // 荣誉ID
+
+  int32 HonorID = 1;
+
+  // 内部用户ID
+
+  int32 InternalUserID = 2;
+
+  // 荣誉类型
+
+  HonorTypeEnum HonorType = 3;
+
+  // 荣誉名称
+
+  google.protobuf.StringValue HonorName = 4;
+
+  // 荣誉说明
+
+  google.protobuf.StringValue HonorDesc = 5;
+
+  // 荣誉时间
+
+  google.protobuf.Timestamp HonorTime = 6;
+
+  // 更新时间
+
+  google.protobuf.Timestamp UpdateTime = 7;
+}
+
+// InternetID和BetaUnionID关系 (edit by 1037426)
+
+message InternetIDRelationItem {
+
+  // InternetID
+
+  int64 InternetID = 1;
+
+  // BetaUnionID
+
+  int64 BetaUnionID = 2;
+
+  // 更新时间
+
+  google.protobuf.Timestamp CreateTime = 3;
+
+  // 来自模块标志
+
+  FromFlagEnum FromFlag = 4;
+
+  // 原企业微信公司ID，现统一扩展Tag
+
+  google.protobuf.StringValue ExtendTag = 5;
+
+  // 二级标签,可用于企微信场景的SuiteId
+  google.protobuf.StringValue ExtendTag2=6;
+}
+
+// 模块信息结构体
+
+message ModuleItem {
+
+  // 模块ID
+
+  int32 ModuleID = 1;
+
+  // 模块英文名
+
+  google.protobuf.StringValue ModuleNameEN = 2;
+
+  // 模块中文名
+
+  google.protobuf.StringValue ModuleNameCN = 3;
+
+  // 模块类型
+
+  ModuleTypeEnum ModuleType = 4;
+
+  // 模块URL
+
+  google.protobuf.StringValue ModuleUrl = 5;
+}
+
+// 产品权限信息结构体
+
+message ProductRightItem {
+
+  // 用户内部ID
+
+  int32 InternalUserID = 1;
+
+  // 产品ID
+
+  int32 ProductID = 2;
+
+  // 开始时间
+
+  google.protobuf.Timestamp RightItemStartDate = 3;
+
+  // 截止时间
+
+  google.protobuf.Timestamp RightItemEndDate = 4;
+}
+
+// 用户基本信息结构体，定义了用户的基本信息。
+
+message SalesUserInfoItem {
+
+  // 客户经理ID
+
+  int32 SalesUserID = 1;
+
+  // 客户经理登录名
+
+  google.protobuf.StringValue SalesUserLoginName = 2;
+
+  // 客户经理登录密码
+
+  google.protobuf.StringValue SalesUserPass = 3;
+
+  // 客户经理显示名称
+
+  google.protobuf.StringValue SalesUserName = 4;
+
+  // 客户经理电话
+
+  google.protobuf.StringValue SalesUserPhone = 5;
+
+  // 客户经理手机
+
+  google.protobuf.StringValue SalesUserCellPhone = 6;
+
+  // 客户经理邮箱
+
+  google.protobuf.StringValue SalesUserEmail = 7;
+
+  // 客户经理照片
+
+  google.protobuf.StringValue SalesUserPhoto = 8;
+
+  // 客户经理状态
+
+  int32 SalesUserStatus = 9;
+
+  // 上级客户经理ID
+
+  int32 ParentSalesUserID = 10;
+
+  // 上级客户经理显示名称
+
+  google.protobuf.StringValue ParentSalesUserName = 11;
+
+  // 上级客户经理邮箱
+
+  google.protobuf.StringValue ParentSalesUserEmail = 12;
+}
+
+// 场景信息结构体。
+
+message SceneItem {
+  int32 SceneId = 1;
+
+  int32 InternalUserID = 2;
+
+  // 场景失效时间
+
+  google.protobuf.Timestamp ExpiryTime = 3;
+
+  int32 MaxCount = 4;
+
+  int32 CompanyID = 5;
+
+  google.protobuf.StringValue CompanyName = 6;
+
+  int32 UserType = 7;
+
+  int32 SceneType = 8;
+
+  // 业务时间
+
+  google.protobuf.Timestamp BusinessTime = 9;
+
+  // 业务天数
+
+  int32 BusinessDays = 10;
+
+  // VIP类型
+
+  UserVipTypeEnum UserVipType = 11;
+}
+
+// 统计信息结构体
+
+message StatItem {
+
+  // 内部用户ID
+
+  int32 InternalUserID = 1;
+
+  // 用户ID
+
+  google.protobuf.StringValue UserID = 2;
+
+  // 用户名称
+
+  google.protobuf.StringValue UserName = 3;
+
+  // 最近登录天数
+
+  int32 LatestLoginCount = 4;
+
+  // 最晚登录时间
+
+  google.protobuf.Timestamp MaxLoginTime = 5;
+}
+
+// 用户印象标签结构体
+
+message SystemUserTagItem {
+  int32 SystemUserTagID = 1;
+  google.protobuf.StringValue TagContent = 2;
+  int32 State = 3;
+  google.protobuf.Timestamp CreatedTime = 4;
+}
+
+// 交易签约信息结构体
+
+message TradeContractItem {
+
+  // 签约ID
+
+  int32 ContractID = 1;
+
+  // 签约类型
+
+  ContractTypeEnum ContractType = 2;
+
+  // 内部用户ID
+
+  int32 InternalUserID = 3;
+
+  // 真实姓名
+
+  google.protobuf.StringValue RealName = 4;
+
+  // 手机
+
+  google.protobuf.StringValue PhoneNumber = 5;
+
+  // 身份证正面照片地址
+
+  google.protobuf.StringValue FrontImg = 6;
+
+  // 身份证反面照片地址
+
+  google.protobuf.StringValue BackImg = 7;
+
+  // 手持照地址
+
+  google.protobuf.StringValue PersonImg = 8;
+
+  // 营业执照地址
+
+  google.protobuf.StringValue BusinessLicenceImg = 9;
+
+  // 名片地址
+
+  google.protobuf.StringValue BusinessCardImg = 10;
+
+  // 签约开始日期
+
+  google.protobuf.Timestamp ContractStartDate = 11;
+
+  // 签约结束日期
+
+  google.protobuf.Timestamp ContractEndDate = 12;
+
+  // 签约状态
+
+  ContractStatusEnum ContractStatus = 13;
+
+  // 签约审核说明
+
+  google.protobuf.StringValue ContractCheckMemo = 14;
+
+  // 认证时间
+
+  google.protobuf.Timestamp CreateDate = 15;
+
+  // 身份证号
+
+  google.protobuf.StringValue IdentityCardNo = 16;
+
+  // 公司名称
+
+  google.protobuf.StringValue CompanyName = 17;
+
+  // 身份证号和姓名是否被客户修改过
+
+  bool UserInfoChanged = 18;
+
+  // 认证协议ID
+
+  google.protobuf.StringValue AgreementID = 19;
+
+  // 人脸识别是否成功
+
+  bool VeriFaceSuccess = 20;
+
+  // 人脸识别状态
+
+  google.protobuf.StringValue VeriFaceStatus = 21;
+
+  // 人脸识别信息
+
+  google.protobuf.StringValue VeriFaceMsg = 22;
+
+  // 人脸识别, 公安部&身份证 得分
+
+  double VeriFaceWIScore = 23;
+
+  // 人脸识别, 公安部&活体 得分
+
+  double VeriFaceWLScore = 24;
+
+  // 人脸识别, 身份证&活体 得分
+
+  double VeriFaceILScore = 25;
+
+  // 人脸识别数据文件
+
+  google.protobuf.StringValue VeriFaceDataFile = 26;
+
+  // 人脸识别图片
+
+  google.protobuf.StringValue VeriFaceImg = 27;
+}
+
+// 用户联系地址
+
+message UserAddressItem {
+
+  // 用户地址ID
+
+  int32 UserAddressID = 1;
+
+  // 内部用户ID
+
+  int32 InternalUserID = 2;
+
+  // 用户名
+
+  google.protobuf.StringValue UserName = 3;
+
+  // 邮箱
+
+  google.protobuf.StringValue UserEmail = 4;
+
+  // 手机
+
+  google.protobuf.StringValue UserCellPhone = 5;
+
+  // 公司
+
+  google.protobuf.StringValue UserCompany = 6;
+
+  // 职位
+
+  google.protobuf.StringValue UserPosition = 7;
+
+  // 地址
+
+  google.protobuf.StringValue UserAddress = 8;
+
+  // 更新时间
+
+  google.protobuf.Timestamp UpdateTime = 9;
+}
+
+message UserApplicationInfo {
+  int32 UserAppId = 1;
+
+  int32 InternalUserID = 2;
+
+  ApplicationTypeEnum Type = 3;
+
+  // 备注信息
+
+  google.protobuf.StringValue Additional = 4;
+
+  google.protobuf.Timestamp CreateTime = 5;
+}
+
+// 佣金结算结构体
+
+message UserBrokerageItem {
+  int32 UserBrokerageID = 1;
+
+  int32 InternalUserID = 2;
+
+  double Amount = 3;
+
+  int32 State = 4;
+
+  google.protobuf.StringValue Memo = 5;
+
+  int32 Mode = 6;
+
+  google.protobuf.Timestamp UpdateTime = 7;
+}
+
+// 用户权限分组
+
+message UserCatalogItem {
+
+  // 内部用户ID
+
+  int32 InternalUserID = 1;
+
+  // 权限分组ID
+
+  int32 CatalogID = 2;
+
+  // BetaCode
+
+  google.protobuf.StringValue BetaCode = 3;
+
+  // 是否有权限
+
+  bool IsHadRight = 4;
+}
+
+// 用户与分组关系信息结构体
+
+message UserGroupItem {
+
+  // 用户分组ID
+
+  int32 UserGroupID = 1;
+
+  // 分组ID
+
+  int32 GroupID = 2;
+
+  // 用户分组关联类型
+
+  UserGroupRefTypeEnum RefType = 3;
+
+  // 用户分组关联ID
+
+  int32 RefID = 4;
+}
+
+// 用户相册信息结构体
+
+message UserPhotosItem {
+
+  // ID
+
+  int32 UserPhotoID = 1;
+
+  // 内部用户ID
+
+  int32 InternalUserID = 2;
+
+  // 相册类型
+
+  PhotoTypeEnum PhotoType = 3;
+
+  // 照片
+
+  google.protobuf.StringValue PhotoImg = 4;
+
+  // TODO视频封面
+
+  google.protobuf.StringValue VideoCover = 5;
+
+  // 腾讯视频的FileId
+
+  int64 TCFileId = 6;
+
+  // 更新时间
+
+  google.protobuf.Timestamp UpdateTime = 7;
+}
+
+// 用户访客开关设置结构体
+
+message UserRecordAuthTypeItem {
+
+  // ID
+
+  int32 Id = 1;
+
+  // CID
+
+  int32 CId = 2;
+
+  ///
+
+  int32 AuthType = 3;
+
+  // 用户访客模块
+
+  UserRecordFlagTypeEnum FlagType = 4;
+
+  // 修改时间
+
+  google.protobuf.Timestamp UpdateTime = 5;
+
+  // 创建时间
+
+  google.protobuf.Timestamp CreateTime = 6;
+
+  // 全局唯一用户ID
+
+  int64 BetaUnionID = 7;
+}
+
+// 用户权限结构体
+
+message UserRightItem {
+
+  // 权限ID
+
+  int32 RightID = 1;
+
+  // 用户ID
+
+  int32 InternalUserID = 2;
+
+  // 模块ID
+
+  int32 ModuleID = 3;
+
+  // 功能ID
+
+  int32 FuncID = 4;
+
+  // 开始时间
+
+  google.protobuf.Timestamp BeginDate = 5;
+
+  // 截止时间
+
+  google.protobuf.Timestamp EndDate = 6;
+}
+
+// 用户印象标签结构体
+
+message UserTagItem {
+
+  int32 TagID = 1;
+
+  int32 SystemUserTagID = 2;
+
+  int32 InternalUserID = 3;
+
+  google.protobuf.StringValue TagContent = 4;
+
+  int32 VoteCount = 5;
+
+  int32 State = 6;
+
+  google.protobuf.Timestamp CreatedTime = 7;
+
+  int32 VoteDetailID = 8;
+}
+
+// 用户消息推送令牌结构体
+
+message UserTokenItem {
+  int32 InternalUserID = 1;
+  int32 LoginSvcID = 2;
+  google.protobuf.StringValue DiskID = 3;
+  google.protobuf.StringValue Token = 4;
+  google.protobuf.StringValue GetuiCID = 5;
+  google.protobuf.StringValue PhoneModel = 6;
+  google.protobuf.Timestamp RPGenDatetime = 7;
+}
+
+// VIP用户订单信息结构体
+
+message UserVipOrderItem {
+
+  // 订单ID
+
+  int32 VipOrderID = 1;
+
+  // 内部用户ID
+
+  int32 InternalUserID = 2;
+
+  // 支付订单号
+
+  google.protobuf.StringValue OutTradeNo = 3;
+
+  // 订单期限
+
+  UserVipOrderTermEnum OrderTerm = 4;
+
+  // 最终支付价格
+
+  double Price = 5;
+
+  // 优惠码
+
+  google.protobuf.StringValue DiscountCode = 6;
+
+  // 订单状态
+
+  UserVipOrderStatusEnum OrderStatus = 7;
+
+  // vip类型
+
+  UserVipTypeEnum UserVipType = 8;
+
+  // VIP开始时间
+
+  google.protobuf.Timestamp VipStartTime = 9;
+
+  // VIP结束时间
+
+  google.protobuf.Timestamp VipExpiryTime = 10;
+
+  // 更新时间
+
+  google.protobuf.Timestamp RPGenDatetime = 11;
+
+  // APP，如Beta理财师和查私募app
+
+  AppTypeEnum AppType = 12;
+}
+
+// VIP用户权限包信息结构体
+
+message UserVipPackageItem {
+
+  // 用户VIP关联类型，机构还是个人
+
+  UserVipRefTypeEnum RefType = 1;
+
+  // 关联ID
+
+  int32 RefID = 2;
+
+  // VIP类型
+
+  UserVipTypeEnum UserVipType = 3;
+
+  // VIP开始时间
+
+  google.protobuf.Timestamp VipStartTime = 4;
+
+  // VIP过期时间
+
+  google.protobuf.Timestamp VipExpiryTime = 5;
+
+  // 延期天数
+
+  int32 BuyDayNum = 6;
+
+  // 更新时间
+
+  google.protobuf.Timestamp RPGenDatetime = 7;
+}
+
+// 最新版本信息结构体
+
+message VersionItem {
+
+  // 版本号
+
+  int32 VersionCode = 1;
+
+  // 版本
+
+  google.protobuf.StringValue VersionName = 2;
+
+  // 升级下载地址
+
+  google.protobuf.StringValue DownloadUrl = 3;
+
+  // 升级说明
+
+  google.protobuf.StringValue UpdateLog = 4;
+}
+
+// 用户基本信息
+
+message WXUserInfo {
+  google.protobuf.StringValue APPId = 1;
+  google.protobuf.StringValue OpenId = 2;
+  google.protobuf.StringValue UnionId = 3;
+  google.protobuf.StringValue NickName = 4;
+  int32 Sex = 5;
+  google.protobuf.StringValue Province = 6;
+  google.protobuf.StringValue City = 7;
+  google.protobuf.StringValue Country = 8;
+  google.protobuf.StringValue HeadImgUrl = 9;
+  google.protobuf.StringValue Privilege = 10;
+  google.protobuf.StringValue RefreshToken = 11;
+  google.protobuf.Timestamp UpdateTime = 12;
+  google.protobuf.Timestamp CreateTime = 13;
+}
+
+// 芝麻信用评分结构体
+
+message ZhimaCreditItem {
+
+  // 用户ID
+
+  int32 InternalUserID = 1;
+
+  // OpenId
+
+  google.protobuf.StringValue OpenId = 2;
+
+  // 芝麻评分
+
+  double ZhimaScore = 3;
+
+  // 更新时间
+
+  google.protobuf.Timestamp UpdateTime = 4;
+}
+
+// CustUserOrg集合
+message RepeatedCustOrgItem { repeated CustOrgItem Items = 1; }
+
+// 企微类型的部门信息
+message WWDepInfo {
+  int64 DepId = 1;    // 部门ID
+  string Name = 2;    // 部门名称
+  int64 ParentId = 3; // 部门ID
+  int64 Order = 4;    // 排序
+  int32 State = 5;    // 状态
+}
+
+message UserExtInfoItems { repeated UserExtInfoItem Results = 1; }
+
+// 批量用户身份信息
+message UserIdentites { repeated GlobalIdentityItem GlobalIdentityItem = 1; }
+
+// 用户驾驶舱关系
+message UserCustCompanyLite {
+  // 用户ID
+  int32 InternalUserID = 1;
+  // 公司id
+  int32 custCompanyId = 2;
+  // 状态，是否管理驾驶舱可见（0无效，1可见，2Vip到期失效）
+  int32 State = 3;
+  // vip类型
+  int32 VipType = 4;
+  // 用户驾驶舱角色
+  UserDutyEnum UserDuty = 5;
+}

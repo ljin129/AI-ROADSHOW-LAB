@@ -1,0 +1,58 @@
+module.exports = {
+	root: true,
+	env: {
+		node: true
+	},
+	extends: [
+		'plugin:vue/vue3-essential',
+		'@vue/standard'
+	],
+	parserOptions: {
+		parser: 'babel-eslint'
+	},
+	rules: {
+		'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+		'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+		'no-console': 'off',
+		'no-debugger': 'off',
+		'vue/html-closing-bracket-newline': 'off',
+		'vue/html-indent': 'off',
+		'vue/html-quotes': 'off',
+		'vue/html-self-closing': 'off',
+		'vue/max-attributes-per-line': 'off',
+		'vue/multiline-html-element-content-newline': 'off',
+		'vue/mustache-interpolation-spacing': 'off',
+		'vue/no-spaces-around-equal-signs-in-attribute': 'off',
+		'vue/singleline-html-element-content-newline': 'off',
+		'vue/name-property-casing': 'off',
+		'quotes': 'off',
+		'quote-props': 'off',
+		'no-var': "error",
+		'no-irregular-whitespace': 'off',
+		'semi': [0, 0],
+		'indent': [0, 'tab'],
+		'no-tabs': ["error", { allowIndentationTabs: true }],
+		"comma-dangle": [0, "never"],
+		'spaced-comment': [0, 0],
+		"space-before-function-paren": [0, 0],
+		'dot-notation': "off",
+		'eqeqeq': 'off',
+		"no-tabs": 'off',
+		'comma-spacing': [0, 0],
+		'key-spacing': [0, 0],
+		'space-before-blocks': [0, 0],
+		'block-spacing': "off",
+		'keyword-spacing':"off",
+		'arrow-spacing':"off",
+		'object-curly-spacing':"off",
+		'no-unneeded-ternary':"off",
+		'space-infix-ops':'off',
+		'no-trailing-spaces': 'off',
+		'no-mixed-spaces-and-tabs': 'off',
+		'padded-blocks': 'off',
+		'space-unary-ops': 'off',
+		'no-multiple-empty-lines': 'off',
+		'no-multi-spaces': 'off',
+		'camelcase':'off',
+	}
+}

@@ -1,0 +1,72 @@
+﻿syntax = "proto3";
+
+import "BetaAuthEntity.proto";
+import "BetaAuthEnumEntity.proto";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+package Beta.Auth.Basic;
+
+message ValidAllModuleFuncsReq{
+    // 用户Id
+    int32 InternalUserID=2;
+    // 机构Id
+    google.protobuf.Int32Value CustCompanyID=3;
+    // 企微CorpId
+    google.protobuf.StringValue CorpId=4;
+    google.protobuf.StringValue SuiteId=5; //1037426 同企业多驾驶舱
+}
+
+// 验证模块权限Req
+message ValidModuleFuncsReq{
+    // 模块功能权限列表
+    repeated int32 ModuleFuncs=1;
+    // 用户Id
+    int32 InternalUserID=2;
+    // 机构Id
+    google.protobuf.Int32Value CustCompanyID=3;
+    // 企微CorpId
+    google.protobuf.StringValue CorpId=4;
+    google.protobuf.StringValue SuiteId=5; //1037426 同企业多驾驶舱
+}
+
+// 验证模块权限Resp
+message ValidModuleFuncsResp{
+    // 基础结果
+    BaseResult result=1;
+    // VIP项目列表
+    map<int32,AuthMenuRightType> mapItems=2;
+}
+
+message BatchValidModuleFuncsReq{
+    repeated int32 ModuleFuncs=1;
+    repeated int32 InternalUserIDs=2;
+}
+
+message BatchValidModuleFuncsResp{
+    message ModuleFuncRight { map<int32,AuthMenuRightType> maps = 1; }
+
+    BaseResult result=1;
+    // VIP项目列表
+    map<int32,ModuleFuncRight>  mapItems=2;
+}
+
+
+
+service AuthMenuService {
+    
+// 验证模块权限 (edit by 1037426)
+rpc ValidModuleFuncs(ValidModuleFuncsReq) returns (ValidModuleFuncsResp); 
+
+// 验证所有模块权限 (edit by 1037426)
+rpc ValidAllModuleFuncs(ValidAllModuleFuncsReq) returns (ValidModuleFuncsResp);
+
+// 验证驾驶舱所有功能点权限 (edit by 1037426)
+rpc ValidCompanyModuleFuncs(ValidModuleFuncsReq) returns (ValidModuleFuncsResp);
+
+// 批量验证驾驶舱共嗯点
+rpc BatchValidModuleFuncs(BatchValidModuleFuncsReq) returns (BatchValidModuleFuncsResp);
+
+}

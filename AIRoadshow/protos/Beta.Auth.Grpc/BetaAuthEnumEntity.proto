@@ -1,0 +1,692 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Beta.Grpc.Auth.EnumEntity";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+package Beta.Auth;
+
+// 性别
+enum SexEnum {
+  Female = 0; // 女
+  Male = 1;   // 男
+}
+
+// 身份校验状态
+enum IDCardCheckStatusEnum {
+  UnAuthenticated = 0; // 未进行实名认证
+  Passed = 1;          // 身份与实名认证一致
+  NoPassed = 2;        // 身份与实名认证不一致
+}
+
+//
+enum BusinessCardStyleEnum {
+  Nochoiced = 0;  // 未选择
+  SmallImage = 1; // 小图模式
+  LargeImage = 2; // 大图模式
+}
+
+// 功能权限，按位运算，按1、2、4、8、16、32等2进制递进
+enum FuncPermissionEnum {
+  NoFunc = 0;          // 无
+  VIPFunc = 1;         // VIP
+  FinanceNewsFunc = 2; // 早报
+  ChanneLeadsFunc = 4; // 渠道营销
+}
+
+// 徽章类型，按位运算，按1、2、4、8、16、32等2进制递进，详见枚举
+enum BadgeTypeEnum {
+  NoBadge = 0;      // 无徽章
+  DefaultBadge = 1; // 默认徽章
+}
+
+// 用户VIP关联类型，机构还是个人，如对应Tb_UserVipPackage表里RefType
+enum UserVipRefTypeEnum {
+  DefaultVipType = 0;
+  PersonVIP = 1; // 个人VIP
+  OrgVIP = 2;    // 机构VIP
+}
+
+// VIP类型，按位运算，按1、2、4、8、16、32等2进制递进
+enum UserVipTypeEnum {
+  FreeType = 0;            // 免费版
+  VIPType = 1;             // VIP版
+  FinanceVIPType = 2;      // 早报版
+  FundVIPType = 4;         // 基金诊断版
+  ShopVIPType = 8;         // 理财微店版
+  BaseVipType = 0x10;      // 基础版
+  LicaiBiJi = 0x20;        // 理财笔记
+  InsuranceVIPType = 0x40; // 保险计划书
+  // 早报保险版 = 16;//
+  // 早报小微版 = 32
+  GameVip = 0x80;                // 游戏VIP
+  SocialGroup = 0x100;           // 社群
+  GenwopaiVideo = 0x200;         // 跟我拍视频
+  Tongping = 0x400;              // 同屏演示
+  ShengyinKelong = 0x800;        // 声音克隆
+  KehuPianhaoXiaowei = 0x1000;   // 客户偏好小微版
+  KehuPianhaoBaoxian = 0x2000;   // 客户偏好保险版
+  ShangjiFaxianZonghe = 0x4000;  // 商机发现综合版
+  ShangjiFaxianBaoxian = 0x8000; // 商机发现保险版
+  ShangjiFaxianXindai = 0x10000; // 商机发现信贷版
+  AIJiaolian = 0x20000;          // AI教练 = 0x20000
+  NeirongXingqiu = 0x40000;      // 内容星球 = 0x40000
+  QiweiYunyingGongju = 0x80000;  //        企微运营工具 = 0x80000,
+  QiweiKehuGuanli = 0x100000;    //    企微客户管理 = 0x100000,
+  EventMarketing = 0x200000; // 事件营销[1032800] 新增VIP，原内容星球 拆分
+  MarketingPad = 0x400000; // 营销垫板[1032800] 新增VIP，原内容星球 拆分
+  BreakingNews_24h =
+      0x800000; // 24h热点[1032800] 新增VIP，限免（基础版） 原 内容星球
+  FinancialCalendar = 0x1000000; // 理财日历[1032800]
+                                 // 新增VIP，原先基础版，现收费
+  WordLibrary = 0x2000000; // 话术库[1032800] 新增VIP
+}
+// 用户类型，不同的产品类型，如理财版和财富版
+enum UserTypeEnum {
+  DefaultUserType = 0; //
+  BetaWM = 1;          // //理财标准版
+  BetaSuperWM = 2;     //  //财富高级版
+}
+// 账号状态
+enum UserEnableEnum {
+  DefaultEnable = 0;   //
+  Normal = 1;          // 正常
+  Expired = 2;         // 账号过期
+  NoActivited = 99999; // 待激活
+}
+// VIP账号状态
+enum UserStatusEnum {
+  DefaultUserStatus = 0; // 普通账号
+  VIPStatus = 1;         // VIP正式账号
+}
+
+// 服务模式
+enum ServiceModeEnum {
+  DefaultServiceMode = 0;
+  WeixinAutoService = 11; //
+  WeixinCallBack = 12;    //
+}
+
+// 身份信息审核状态
+enum InfoStatusEnum {
+  UnCompleted = 0;  // 信息未完善
+  StatusPassed = 1; // 信息审核通过
+  Checking = 2;     // 信息审核中
+  Rejected = 3;     // 信息被驳回
+}
+
+// Beta理财师后台管理的用户状态
+enum CustUserStatusEnum {
+  NormalUserStatus = 0; // 正常
+  Stoped = 1;           // 停用
+  Deleted = 2;          // 删除后不可恢复
+}
+
+// Beta理财师后台管理的用户角色
+enum UserDutyEnum {
+  DefaultDuty = 0;
+  Manager = 1;       // 部门经理
+  Worker = 2;        // 一般员工
+  SystemManager = 3; // 系统管理员
+  SubManager = 4;    // 子公司管理员
+}
+
+// 登录状态
+enum LoginStatusEnum {
+  Success = 0;
+  NoSuchUser = 1;
+  WrongPassword = 2;
+  NodeUnauthorized = 3;
+  HasExpired = 4;
+  Disabled = 5;
+  NotReady = 6;
+  AlreadyLogin = 7;
+  Failed = 8;
+}
+
+// 登录的设备平台
+enum LoginSvcIDEnum {
+  DefaultSvcID = 0;
+  Terminal = 1;
+  IPAD = 2;
+  IPhone = 3;
+  Android = 4;
+  WP = 5;
+  Weixin = 6;
+  Web = 7;                  // PC网站
+  Share = 8;                // 分享
+  IPhoneCodeLogin = 9;      // 短信验证码登录
+  AndroidCodeLogin = 10;    // 短信验证码登录
+  IPhoneBPE = 21;           // 查私募iphone
+  AndroidBPE = 22;          // 查私募android
+  IPhoneCodeLoginBPE = 23;  // 查私募短信验证码登录
+  AndroidCodeLoginBPE = 24; // 查私募短信验证码登录
+  CompanyWebLogin = 25;     // 上游资产方管理后台系统登录
+  SimulateLogin = 26;       // 模拟登录，常用于内部工具验证
+  WxMiniProgram = 27;       // 微信小程序
+  CustCompanyWebLogin = 28; // Beta理财师管理后台系统登录
+  ExternalLogin = 29;       // 外部系统登录
+  IPhoneSEC = 51;           // 云服相关号段从51开头
+  AndroidSEC = 52;
+  PCWebSEC = 53;
+  H5WebSEC = 54;
+  IPhoneSSCF = 71; // 上善财富号段从71开头 上善财富iphone理财师版
+  AndroidSSCF = 72;          // 上善财富android理财师版
+  IPhoneCodeLoginSSCF = 73;  // 上善财富短信验证码登录
+  AndroidCodeLoginSSCF = 74; // 上善财富短信验证码登录
+  IPhoneBIW = 81;            // 保险相关号段从81开头 保险iphone
+  AndroidBIW = 82;           // 保险android
+  IPhoneCodeLoginBIW = 83;   // 保险iphone短信验证码登录
+  AndroidCodeLoginBIW = 84;  // 保险android短信验证码登录
+}
+
+enum CompanyStatusEnum {
+  DefaultCompanyStatus = 0; // 未知
+  NormalCompanyStatus = 1;  // 正常
+  StoppedCompanyStatus = 2; // 停用
+}
+
+enum UserRefTypeEnum {
+  DefaltRefType = 0;
+  GuangzhouZhongHangZaobao = 1;       // 广州中行
+  NingboYinhangZaobao = 2;            // 宁波银行早报
+  GuangdongGonghangZaobao = 3;        // 广东工行早报
+  XinNongshangZaobao = 4;             // 新农商早报
+  NingboYinhangXiaoweiZaobao = 5;     // 宁波银行小微早报
+  HengfengYinhang = 6;                // 恒丰银行
+  HuaanZhengquan = 7;                 // 华安证券
+  ShenzhenGonghang = 8;               // 深圳工行
+  LinshiTiyan = 9;                    // 临时体验
+  PingdingshanYinhang = 10;           // 平顶山银行
+  AnhuiYouchu = 11;                   // 安徽邮储
+  HuaxiaYinhangZaobao = 12;           // 华夏银行早报
+  ChongqingGonghangZaobao = 13;       // 重庆工行早报
+  PinganRenshou = 14;                 // 平安人寿
+  XingyeYinhangZonghang = 15;         // 兴业银行总行
+  HuaxiaYinhangZonghang = 16;         // 华夏银行总行
+  ShenzhenJianhang = 17;              // 深圳建行
+  HuaxiZhengquanZongbu = 18;          // 华西证券总部
+  LiAnRenshouBaoxian = 19;            // 利安人寿保险
+  ShanxiZhonghang = 20;               // 陕西中行
+  YixingNongshanghang = 21;           // 宜兴农商行
+  ZhongxinYinhangZonghang = 22;       // 中信银行总行
+  HuataiRenshouGexianbu = 23;         // 华泰人寿个险部
+  MinshengYinhangZonghang = 24;       // 民生银行总行
+  HubeiJiaohang = 25;                 // 湖北交行
+  JiansheYinhangZonghang = 26;        // 建设银行总行
+  GuangdongGonghangPuhuiJinrong = 27; // 广东工行普惠金融
+  HeibeiYinhangZonghangZaobao = 28;   // 河北银行总行早报
+  HubeiZhonghangZaobao = 29;          // 湖北中行早报
+  QiluYinhangZaobao = 30;             // 齐鲁银行早报
+  WeifangYinhangZaobao = 31;          // 潍坊银行早报
+  PinganPuhui = 32;                   // 平安普惠
+  XingyeYinhangGedai = 33;            // 兴业银行个贷
+  Beierta = 34;                       // 贝耳塔
+  JiashanNongshanghang = 35;          // 嘉善农商行
+  WeizhongYinhang = 36;               // 微众银行
+  TianjinYinhang = 37;                // 天津银行
+  ZhongyuanYinhang = 38;              // 中原银行 = 38
+  XiamenGuojiYinhang = 39;            //        厦门国际银行 = 39,
+  ZhonghangXintuo = 40;               //    中航信托 = 40
+  ChengduYinhang = 41;                //        成都银行 = 41
+  ShandongGonghang = 42;              // 山东工行 = 42
+  BetaTest = 43;                      // Beta测试 =43
+  QingdaoYinhangZonghang = 44;        //        青岛银行 = 44,
+  XingyeYinhangCaifuZhuanxian = 45;   //    兴业银行财富专线 = 45
+  NanyangShangyeYinhang = 46;         // 南洋商业银行 = 46
+  DalianYinhang = 47;                 // 大连银行 = 47
+  MintaiYinhang = 48;                 // 民泰银行 = 48
+  JiningYinhang = 49;                 // 济宁银行 = 49
+  NingxiaHuangheNongshanghang = 50;   // 宁夏黄河农商行 = 50,
+  QujingYinhang = 51;                 // 曲靖银行 = 51
+  JianghaiZhengqun = 52;              // 江海证券 = 52
+  PuyiCaifu = 53;                     // 普益财富 = 53
+  RizhaoYinhang = 54;                 // 日照银行 = 54
+  ZhongyuanZhengquan = 55;            // 中原证券 = 55
+  JinshangYinhang = 56;               // 晋商银行 = 56
+  ShanghaiNongshangYinhang = 57;      // 上海农商银行 = 57
+  XiningNongshanghang = 58;           // 西宁农商行 = 58
+  GuangfaJijin = 59;                  // 广发基金 = 59
+  WeiHaiYinhang = 60;                 // 威海银行
+  JianHangShengHuo = 61;              // 建行生活
+  GuangDaYinhang=62;                  // 光大银行
+  GuiZhouGongHang=63;                 // 贵州工行
+  YinZhouYinHang=64;                  // 鄞州银行
+  LiaoNingYouChu=65;                  // 辽宁邮储
+  JiLinYinHang=66;                    // 吉林银行
+  ShenZhenZhongHang=67;               // 深圳中行
+  ZhongXinJinKong=68;                 // 中信金控
+  JiangSuZhongHang=69;                // 江苏中行
+  GuangDaXiaoGuHuiQian=70;            // 光大小顾回迁
+  TongFangRenShouBaoXian=71;          // 同方人寿保险
+  XiAnYinHang=72;                     // 西安银行
+  DongGuanNongShang=73;               // 东莞农商
+  GuiYangYinHang=74;                  // 贵阳银行
+  JiangYinNongShangHang=75;           // 江阴农商行
+  ChangAnYinhang=77;                  // 长安银行
+  GongYinRuiXin=78;                   // 工银瑞信
+}
+
+// 微信授权类型;默认授权方式Default = BetaFirst;不授权NoneAuth = Valid;
+enum WxAuthTypeEnum {
+  NoWxAuthType = 0;
+  Valid = 1;    // 该字段数据是否有效
+  BetaBase = 2; // Beta基础授权
+  BetaUser = 4; // Beta高级授权
+  ThrBase = 8;  // 三方基础授权
+  ThrUser = 16; // 三方高级授权
+  BetaFirst = 13; // Beta优先，即使用Beta的高级授权和三方的基础授权
+  ThrFirst = 19; // 三方优先，即使用Beta的基础授权和三方的高级授权
+
+  // 默认授权方式
+  // Default = BetaFirst;
+
+  // 不授权
+  //  NoneAuth = Valid;
+}
+
+// 来自模块标志，按位运算，按1、2、4、8、16、32等2进制递进，详见枚举
+enum FromFlagEnum {
+  DefaultFromFlag = 0;          // 未知
+  ChannelMarketing = 1;         // 渠道营销
+  MarketingCanlender = 2;       // 营销日历
+  CorpWechat = 4;               // 企业微信
+  OutPublicPublisher = 8;       // 外部公众号
+  InnerPublicPublisher = 16;    // 内部公众号
+  Douyin = 32;                  // 抖音 = 32
+  AIJiaolianXiaochengxu = 64;   // AI教练小程序 = 64,
+  LicaishiZhinengZhushou = 128; //    理财师智能助手 = 128
+}
+
+// 员工类型,1-客户专员,2-贵宾客户经理
+enum CustUserTypeEnum {
+  Default = 0;
+  NormalManager = 1;
+  VipManager = 2;
+}
+
+enum OrgTypeEnum {
+  TopCompany = 0; // 总公司
+  SubCompany = 1; // 子公司
+  Department = 2; // 部门
+}
+
+// 早报=1,小店装修=2
+enum CustCompanyModuleEnum {
+  DefaultCompanyModule = 0;
+  ZaobaoCompanyModule = 1;   // 早报
+  XiaodianCompanyModule = 2; // 小店装修
+}
+
+// 优惠码状态
+enum DiscountCodeStatusEnum {
+  NotAvailableCodeStatus = 0; // 不可用
+  NoarmalCodeStatus = 1;      // 正常
+}
+
+// 优惠码类型
+enum DiscountUseKindEnum {
+  ZeroYear = 0;
+  OneYear = 1;
+  TwoYear = 2;
+}
+
+// 功能类型
+enum FuncTypeEnum {
+  NoFuncType = 0;
+  Base = 1; // 基础功能
+  Ext = 2;  // 扩展功能
+}
+
+// 证件类型
+enum IdentityTypeEnum {
+  NoIdentity = 0;
+  Identity = 1;                    // 身份证
+  Passport = 2;                    // 护照
+  HKIdentity = 3;                  // 香港身份证
+  MacaoIdentity = 4;               // 澳门身份证
+  TWIdentity = 5;                  // 台湾身份证
+  GangAoIdentity = 7;              // 港澳通行证
+  CompanyIdentity = 8;             // 营业执照
+  ProductIdentity = 9;             // 产品备案编码
+  FundPractitionerCertificate = 10; // 基金从业资格证
+}
+
+
+// 分组配置
+enum GroupConfigTypeEnum {
+  NoConfig = 0;
+  FavoriteSec = 1; // 关注的证券
+}
+
+// 荣誉类型
+enum HonorTypeEnum {
+  NoHonor = 0;
+  EducationHonor = 1; // 教育荣誉
+  WorkHonor = 2;      // 工作荣誉
+}
+
+// 模块类型
+enum ModuleTypeEnum {
+  NoModule = 0;
+  Page = 1;      // 整个界面
+  InnerFunc = 2; // 界面内部功能点
+}
+
+// 签约类型
+enum ContractTypeEnum {
+  NoContractType = 0;
+  IFAContractType = 1;     // IFA认证
+  CompanyContractType = 2; // 企业认证
+}
+
+// 签约状态
+enum ContractStatusEnum {
+  NoContract = 0;
+  AssignedContract = 1;   // 已签约
+  UnAssignedContract = 2; // 未签约
+  CheckContract = 3;      // 审核中
+  DenidedContract = 4;    // 驳回
+}
+
+// 用户申请类型枚举
+enum ApplicationTypeEnum {
+  NoType = 0;
+  VipTry = 1;                     // VIP试用申请
+  VipGroup = 2;                   // VIP团购申请
+  JigouZaobao = 3;                // 机构早报定制申请
+  ZaobaoTry = 4;                  // 早报试用申请
+  ZaobaoGroup = 5;                // 早报团购申请
+  FundTry = 6;                    // 基金诊断版试用申请
+  FundGroup = 7;                  // 基金诊断版申请
+  WeidianTry = 8;                 // 理财微店版试用申请
+  WeidianGroup = 9;               // 理财微店版团购申请
+  ZaobaoWeidianTry = 10;          // 早报和微店试用申请
+  ZaobaoWeidianGroup = 11;        // 早报和微店团购申请
+  HuokeKuaicheXinyonghu = 12;     // 获客快车新用户
+  HuokeKuaicheLiebian = 13;       // 获客快车裂变
+  QingsongKaidan = 14;            // 轻松开单
+  Haohuali188 = 15;               // 豪华礼188
+  BeixiaobaoLuodiyeZhuce = 16;    // 贝小宝落地页注册
+  GenwopaiTryApply = 17;          // 跟我拍试用申请
+  GenwopaiGroupApply = 18;        // 跟我拍团购申请
+  ShuzihuaJinyingMoshiTiyan = 19; // 数字化经营模式体验 = 19
+  Shengyinkelong = 20;            // 声音克隆 = 20
+}
+
+// 用户分组关联外部ID类型
+enum UserGroupRefTypeEnum {
+  NoRefType = 0;
+  CompanyID = 1;
+  DeptID = 2;
+  BranchID = 3;
+  InternalUserID = 4;
+}
+
+// 用户相册
+enum PhotoTypeEnum {
+  NoPhoto = 0;
+  Photo = 1;   // 个人照片
+  Video = 2;   // 个人视频
+  TXVideo = 3; // 个人视频腾讯
+}
+
+// 营销线索类型
+enum UserRecordFlagTypeEnum {
+  // 全部 = -1,
+  Weizhi = 0;                     // 未知
+  Zaobao = 1;                     // 早报
+  Meiwen = 2;                     // 美文
+  ChanpinXiangqing = 3;           // 产品详情
+  MingpianFenxiang = 4;           // 名片分享
+  YunfuChanpin = 5;               // 云服产品详情
+  Yanbao = 6;                     // 研报
+  QiyeDianpu = 7;                 // 企业店铺
+  QiyeDongtai = 8;                // 企业动态
+  YunfuMingpianWeishangcheng = 9; // 云服名片微商城
+  YunfuMingpianDongtai = 10;      // 云服名片动态
+  YunfuMingpianGuangwang = 11;    // 云服名片官网
+  YunfuZhibo = 12;                // 云服直播
+  Fachanpin = 13;                 // 发产品
+  Fahuodong = 14;                 // 发活动
+  YunfuMingpainFenxiang = 15;     // 云服名片分享
+  MingpianWeishangcheng = 16;     // 名片微商城
+  MingpianDongtai = 17;           // 名片动态
+  MingpianZidingyi = 18;          // 产品库自定义产品
+  ZaobaoWenzhangTiaozhuan = 19;   // 早报文章跳转
+  ZidingyiFahuodong = 20;         // 自定义发活动
+  Suishouji = 21;                 // 随手记
+  JijinBijiao = 22;               // 基金比较
+  QiyeWeixinZixunXiangqing = 23;  // 企业微信资讯详情
+  ZixunZhuanti = 24;              // 资讯专题
+  Dati = 25;                      // 答题
+  XiaodianHuodong = 26;           // 小店活动
+  XiaodianWenzhang = 27;          // 小店文章
+  XiaodianTeseFuwu = 28;          // 小店特色服务
+  XiaodianLunboGuanggao = 29;     // 小店轮播广告
+  ShipinZhibo = 30;               // 视频直播
+  JijinJingliVip = 31;            // 基金经理VIP
+  ZuheZhenduan = 32;              // 组合诊断
+  TouziFengxiangbiao = 33;        // 投资风向标
+  ZuheZhenduanVIP = 34;           // 组合诊断
+  HudongYouxi = 35;               // 互动游戏
+  XiaodianBobao = 36;             // 小店播报
+  XiaodianChanpin = 37;           // 小店产品
+  ZaobaoShipin = 38;              // 早报视频
+  DuanShipin = 39;                // 短视频
+  GonggaoWenzhang = 40;           // 公告文章
+  GuanweiWenzhang = 41;           // 官微文章
+  GuanxuanWenzhang = 42;          // 官宣文章
+  JigouHaibo = 43;                // 机构海报
+  JijinDasai = 44;                // 基金大赛
+  BaoxianJihuashu = 45;           // 保险计划书
+  JijinJingliGuandian = 46;       // 基金经理观点
+  JijinBodongJiedu = 47;          // 基金波动解读
+  BaoxianChanpinDuibi = 48;       // 保险产品对比
+  DisanfangZixunXiangqing = 49;   // 第三方资讯详情
+  ZixunXiangqing = 50;            // 资讯详情
+  YueduZhangdan = 51;             // 月度账单
+  QuweiYouxi = 52;                // 趣味游戏
+  ZhinengHuashu = 53;             // 智能话术
+  QiyeWeixinQunfa = 54;           // 企业微信群发
+  YingxiaoSucaikuXiangqing = 55;  // 营销素材库详情
+  Faziliao = 56;                  // 发资料
+  DatiLinghongbao = 57;           // 答题领红包
+  QiyeWeixinZhoubao = 58;         // 企业微信周报
+  ShipinBanChanpinXiangqing = 59; // 视频版产品详情
+  ShipinbanZuheZhenduanVIP = 60;  // 视频版组合诊断VIP
+  Wubao = 61;                     // 午报
+  JijinJingbian = 62;             // 基金精编
+  Shouping = 63;                  // 收评
+  Wanbao = 64;                    // 晚报
+  BaoxianJingbian = 65;           // 保险精编
+  LoushiGuancha = 66;             // 楼市观察
+  ShipinbanZixunXiangqing = 67;   // 视频版资讯详情
+  Dadianhua = 68;                 // 打电话
+  Jiaweixin = 69;                 // 加微信
+  LicaiJingbian = 70;             // 理财精编
+  HongguanJingbian = 71;          // 宏观精编
+  GuojishichangJingbian = 72;     // 国际市场精编
+  ZhengquanJingbian = 73;         // 证券精编
+  SimuJingbian = 74;              // 私募精编
+  JiazuCaifuJingbian = 75;        // 家族财富精编
+  ShuichouXiaoweiJingbian = 76;   // 税筹小微精编
+  TeseHuodong = 77;               // 特色活动
+  HuodongZhuanji = 78;            // 活动专辑
+  YunyingHuodong = 79;            // 运营活动
+  DaibanRenwu = 80;               // 待办任务
+  ZaobaoZhaiyaoban = 81;          // 早报摘要版
+  Huanyingyu = 82;                // 欢迎语
+  YunyingYouxi = 83;              // 运营游戏
+  Paitongkuan = 84;               // 拍同款
+  DichanJingbian = 85;            // 地产精编
+  LicaiBiji = 86;                 // 理财笔记
+  ShoupanShipinDianping = 87;     // 收盘视频点评
+  JigouDingzhiChanpin = 88;       // 机构定制产品
+  YingxiaoShipinSucai = 89;       // 营销素材视频
+  YingxiaoSucaiZiliao = 90;       // 营销素材资料
+  ShouhouZhuanqu = 91;            // 售后专区
+  ToujiaoKecheng = 92;            // 投教课程
+  DiaoyanBaogao = 93;             // 调研报告
+  CaifuXueyuan = 94;              // 财富学院
+  ShichangDianping = 95;          // 市场点评
+  CaifuShipin = 96;               // 财富视频=96
+  RedianGuanzhu = 97;             // 热点关注
+  FriendsSOP = 98;                // 朋友圈SOP = 98
+  JijinZixun = 99;                // 基金资讯 = 99,
+  JijinZiliao = 100;              // 基金资料 = 100,
+  JijinShipin = 101;              // 基金视频 = 101,
+  BaoxianZixun = 102;             // 保险资讯 = 102,
+  BaoxianZiliao = 103;            // 保险资料 = 103,
+  BaoxianShipin = 104;            // 保险视频 = 104,
+  SimuZixun = 105;                // 私募资讯 = 105,
+  SimuZiliao = 106;               // 私募资料 = 106,
+  SimuShipin = 107;               // 私募视频 = 107,
+  ZipeiZixun = 108;               // 资配资讯 = 108,
+  ZipeiZiliao = 109;              // 资配资料 = 109,
+  ZipeiShipin = 110;              // 资配视频 = 110,
+  LicaiZixun = 111;               // 理财资讯 = 111,
+  LicaiZiliao = 112;              // 理财资料 = 112,
+  LicaiShipin = 113;              // 理财视频 = 113
+  ShouyeZixun = 114;              // 首页资讯 = 114,
+  ShouyeZiliao = 115;             // 首页资料 = 115,
+  ShouyeShipin = 116;             // 首页视频 = 116
+  PeixunKetang = 117;             // 培训课堂 = 117
+  JijinJingliZiXun = 118;         // 基金经理资讯 = 118
+  SiyouhuaZuheZhenduan = 119;     //,私有化组合诊断 = 119
+  SiyouhuaZuheZhenduanVIP = 120;  // 私有化组合诊断VIP =120
+  HudongDuanshipin = 121;         // 互动短视频 = 121
+  TiantianPengyouquan = 122;      // 天天朋友圈 = 122
+  ZipeiTouziFengxiangbiao = 123;  // 资配投资风向标 = 123
+  YingxiaoDianban = 124;          // 营销垫板 = 124
+  HeguiZixun = 125;               // 合规资讯 = 125
+  XiaoxiTongzhiZixun = 126;       // 消息通知资讯 = 126
+  RedianZixun = 127;              // 热点资讯24H = 127
+  JijinMubiaotou = 128;           // 基金目标投 = 128
+  JijinYiyetong = 129;            // 基金一页通 = 129
+  HangyeJiedu = 130;              // 行业解读 = 130
+  ShijianYingxiao = 131;          // 事件营销 = 131
+  PuhuiJinrongZhoubao = 132;      // 普惠金融周报 = 132
+  ChanjingYouliao = 133;          // 产经有料 = 133
+  ZhiboShuju = 134;               // 直播数据 = 134
+  KeqingWeiji = 135;              // 客情维系 = 135,
+  YiyiChuli = 136;                // 异议处理 = 136
+  Kanshichang = 137;              // 看市场 = 137
+  RedianFengxiangbiao = 138;      // 热点风向标 = 138,
+  NiuguXuanniuji = 139;           // 牛股选牛基 = 139,
+  JijinZhuti = 140;               // 基金主题 = 140,
+  JijinTeseBangdan = 141;         // 基金特色榜单 = 141,
+  ZhishuTouzi = 142;              // 指数投资 = 142,
+  ShichangQingxu = 143;           // 市场情绪 = 143,
+  KongtanZhishu = 144;            // 恐贪指数 = 144
+  JigouWuliao = 145;              // 机构物料 = 145
+  LiCaiRiLi = 146;                // 理财日历=146
+  BoBaoZiXun=147;                 // 播报资讯=147
+  HuoKeZhouBao=148;               // 获客周报=148
+  CDuanJiJinPK=149;               // C端基金PK=149
+  CDuanLiCaiPK=150;               // C端理财PK=150
+  BenDiTongBuZiXun=151;           // 本地同步资讯=151
+  PaitongkuanBenJiGou=152;        // 拍同款本机构=152
+  ZaoBoJianTouTiaoZiXun=153;      // 早播间头条资讯=153
+}
+
+// 订单期限
+enum UserVipOrderTermEnum {
+  NoTerm = 0;
+  OneyearTerm = 365; // 一年
+  TwoyearTerm = 730; // 两年
+  OnemonthTerm = 31; // 一月体验
+}
+
+// 订单支付状态
+enum UserVipOrderStatusEnum {
+  NoOrder = 0;
+  Payed = 1;         // 已支付
+  UnPayed = 2;       // 未支付
+  DrawBack = 3;      // 已退款
+  ObseleteOrder = 4; // 已作废
+}
+
+// APP，如Beta理财师和查私募app
+enum AppTypeEnum {
+  NoApp = 0;
+  BetaBAWApp = 1;  // Beta理财师app
+  BetaBPEApp = 2;  // 查私募app
+  BetaSSCFApp = 3; // 上善财富理财师版
+  BetaBIWApp = 4;  // 保险app
+  BetaIpadApp = 5; // ipad
+}
+
+// 地区返回行政级别范围
+enum AreaLevelEnum {
+  NoAreaLevel = 0;
+  ShengShiXian = 1;        // 省市县
+  ShengShiXianQuanguo = 2; // 省市县加全国
+}
+
+// AuthMenu权限类型
+enum AuthMenuRightType {
+    NO_RIGHT = 0;
+    PERSONAL_RIGHT = 1;
+    ORGANIZATION_RIGHT = 2;
+    PERSONAL_AND_ORGANIZATION_RIGHT = 3;
+    TIMED_FREE = 9;
+}
+
+//AuthMenu模块功能
+enum AuthMenuModuleFunc {
+    NO_FUNC = 0;
+    ZAO_BAO = 1;
+    WEI_DIAN = 2;
+    HUO_KE_FEN_XI = 3;
+    CHENG_JIAO_YI_XIANG = 4;
+    KE_HU_HUA_XIANG = 5;
+    CHAN_PIN_TUI_JIE = 6;
+    HUO_DONG_FABU = 7;
+    REN_MAI_GUI_JI_SHI_CHANG = 8;
+    HAO_YOU_LIAO_TIAN = 9;
+    XIAO_SHOU_JI_HUI = 10;
+    ZU_HE_ZHEN_DUAN_JIAN_YI = 11;
+    JI_JIN_JING_LI_QING_BAO_XIN_XI = 12;
+    YI_DONG_TI_XING_JIAN_YI = 13;
+    DUAN_SHI_PIN_BAO_XIAN_JI_HUA_SHU = 14;
+    GEN_WO_PAI = 15;
+    LI_CAI_BI_JI = 16;
+    SHENG_YIN_KE_LONG = 17;
+    SHE_QUN_XUE_XI = 18;
+    YOU_XI = 19;
+    TONG_PING_YAN_SHI = 20;
+    KE_HU_PIAN_HAO_ZONG_HE = 21;
+    KE_HU_PIAN_HAO_XIAO_WEI = 22;
+    KE_HU_PIAN_HAO_BAO_XIAN = 23;
+    XIAO_SHOU_JI_HUI_ZONG_HE = 24;
+    XIAO_SHOU_JI_HUI_BAO_XIAN = 25;
+    XIAO_SHOU_JI_HUI_XIN_DAI = 26;
+    JI_CHU_BAN = 27;
+    HUO_DONG_YOU_XI = 28;
+    REN_YI_KE_HU_PIAN_HAO = 29;
+    AI_JIAO_LIAN = 30;
+    NEI_RONG_XING_QIU = 31;
+    SHI_JIAN_YING_XIAO = 32;
+    H24_RE_DIAN = 33;
+    YING_XIAO_DIAN_BAN = 34;
+    ZHI_NENG_MING_PIAN = 35;
+    DAI_BAN_REN_WU = 36;
+    QI_WEI_YUN_YING_GONG_JU = 37;
+    QI_WEI_KE_HU_GUAN_LI = 38;
+    LI_CAI_RI_LI = 39;
+    QI_WEI_HU_TONG = 40;
+    KE_QING_WEI_XI = 41;
+    YI_YI_CHU_LI = 42;
+    HUA_SHU_KU = 43;
+    JI_GOU_ZHUAN_QU_ZHU_TUI_CHAN_PIN = 44;
+    FA_ZI_LIAO = 45;
+    JI_JIN_BI_SAI = 46;
+    REN_MAI_GUI_JI_TONG_JI = 47;
+    CHAN_PIN_KU = 48;
+    GUO_CHENG_GUAN_LI_HOU_TAI = 999;
+}
+
+

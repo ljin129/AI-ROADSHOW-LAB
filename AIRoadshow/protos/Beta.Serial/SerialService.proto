@@ -1,0 +1,170 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Beta.Serial.Grpc";
+
+package serial;
+
+enum SerialTypeEnum{
+		Beta = 0; //Beta
+		CMB = 1; //招商银行
+	}
+
+//共可以划分31个 枚举，如果业务量巨大，需要独立Id的，可以申请
+enum SerialIdTypeEnum{
+		BetaLogPathInfo = 0;
+		BetaLogContent = 1;
+		BetaBusinessId=2;//业务系统Id
+		BetaBackendId=3;//后台Id
+		EventLog=4;//事件日志服务
+}
+
+//领域Id
+enum RealmID{
+    RealmIDNone=0;
+    BetaSaaS=1;
+    BetaAuth=2;
+}
+
+message SerialNoRequest{
+	SerialTypeEnum serialType = 1; //编号类型
+}
+
+message SerialNoResponse{
+	string serialNo = 1; //生成的编号
+}
+
+message SerialIdRequest{
+	SerialIdTypeEnum serialType = 1;
+}
+
+message SerialIdResponse{
+	int64 serialId = 1; //生成的编号
+}
+
+message GenSerialIdsReq{
+	SerialIdTypeEnum serialType = 1;
+	int32 count=2;//数量
+}
+
+message GenSerialIdsResp{
+	bool result=1;
+	repeated int64 serialIds=2;
+}
+
+//泛EncryptId批量生成
+message GenEncryptIdsReq{
+	repeated string param = 1;//建议都是1个字母，虽然支持字符串，前缀，拆分数组后会存多份数据
+	int32 count=2;//数量
+}
+
+message GenEncryptIdsResp{
+	bool result=1;
+	repeated EncryptItem items=2;
+}
+
+message EncryptItem{
+	int64 serialId=1;//雪花id
+	string encryptId=2;//加密id
+}
+
+message GetEncryptItemsByEncryptIdsReq{
+	string param = 1;
+	repeated string encryptIds=2;//加密Ids
+}
+
+message GetEncryptItemsByEncryptIdsResp{
+	bool result=1;
+	repeated EncryptItem items=2;
+}
+
+message GetEncryptItemsBySerialIdsReq{
+	string param = 1;
+	repeated int64 serialIds=2;//序列Ids
+}
+
+message GetEncryptItemsBySerialIdsResp{
+	bool result=1;
+	repeated EncryptItem items=2;
+}
+
+message LongSourceItem{
+	int64 serialId=1;//雪花id
+	int64 sourceId=2;//原长整型id
+}
+
+message StrSourceItem{
+	int64 serialId=1;//雪花id
+	string sourceId=2;//原字符串型id
+}
+
+//转换当前Id为泛内容Id
+message GenEncryptIdsByLongIdsReq{
+	repeated string param=1;//建议都是1个字母，虽然支持字符串，前缀，拆分数组后会存多份数据
+	repeated int64 sourceId=2;//源Id
+}
+
+message GenEncryptIdsByLongIdsResp{
+	bool result=1;
+	map<int64,EncryptItem> items=2; 
+}
+
+//转换当前Id为泛内容Id
+message GenEncryptIdsByStrIdsReq{
+	repeated string param=1;//建议都是1个字母，虽然支持字符串，前缀，拆分数组后会存多份数据
+	repeated string sourceId=2;//源Id
+}
+
+message GenEncryptIdsByStrIdsResp{
+	bool result=1;
+	map<string,EncryptItem> items=2; 
+}
+
+message GetSourceIdsByEncryptIdsReq{
+	repeated string param = 1;//请求参数
+	repeated string encryptIds=2;//加密Ids
+}
+
+//GetLongIdsByEncryptIds
+message GetLongIdsByEncryptIdsResp{
+	bool result=1;
+	map<string,LongSourceItem> items=2;
+}
+
+//GetStrIdsByEncryptIds
+message GetStrIdsByEncryptIdsResp{
+	bool result=1;
+	map<string,StrSourceItem> items=2;
+}
+
+//根据泛型
+
+// The service definition.
+service SerialService {
+	// 生成编号
+	rpc GenSerialNo(SerialNoRequest) returns (SerialNoResponse);
+
+	rpc GenSerialId(SerialIdRequest) returns (SerialIdResponse);
+	//生成Id批量
+	rpc GenSerialIds(GenSerialIdsReq) returns(GenSerialIdsResp);
+
+	//泛EncryptId批量生成
+	rpc GenEncryptIds(GenEncryptIdsReq) returns(GenEncryptIdsResp);
+
+	//根据EncryptId获取Item
+	rpc GetEncryptItemsByEncryptIds(GetEncryptItemsByEncryptIdsReq) returns(GetEncryptItemsByEncryptIdsResp); 
+
+	//根据序列Id获取Item
+	rpc GetEncryptItemsBySerialIds(GetEncryptItemsBySerialIdsReq) returns(GetEncryptItemsBySerialIdsResp);
+
+	//根据当前Id获取(数字型)
+	rpc GenEncryptIdsByLongIds(GenEncryptIdsByLongIdsReq) returns(GenEncryptIdsByLongIdsResp);
+
+	//根据当前Id获取(字符串型)
+	rpc GenEncryptIdsByStrIds(GenEncryptIdsByStrIdsReq) returns(GenEncryptIdsByStrIdsResp);
+
+	//根据加密Id列表获取LongIds
+	rpc GetLongIdsByEncryptIds(GetSourceIdsByEncryptIdsReq) returns(GetLongIdsByEncryptIdsResp);
+
+	//根据加密Id列表获取LongIds
+	rpc GetStrIdsByEncryptIds(GetSourceIdsByEncryptIdsReq) returns(GetStrIdsByEncryptIdsResp);
+}

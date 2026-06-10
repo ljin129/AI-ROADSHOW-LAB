@@ -1,0 +1,241 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Beta.Grpc.Auth";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "BetaAuthEntity.proto";
+import "BetaAuthRequest.proto";
+import "BetaAuthResponse.proto";
+
+package Beta.Auth;
+
+service UserExtService {
+  // 根据userid获取UserExtInfoItem
+  rpc GetUserExtInfoForCustCompany(RequestInternalUserID)
+      returns (UserExtInfoItem);
+
+  // 获取管理驾驶舱
+  rpc GetCustCompanyByID(RequestCustCompanyID) returns (CustCompanyItem);
+
+  // 获取custuserorg
+  // rpc GetCustUserOrgByUserID(RequestInternalUserIdCustId)
+  // returns(CustUserOrgItem);
+
+  // 根据企业微信公司ID获取管理驾驶舱 (edit by 1037426)
+  rpc GetCustCompanyByCorpId(RequestWwCorpId) returns (CustCompanyItem);
+
+  // 通过关系获取BetaUnionID
+  rpc GetBetaUnionIDListByInternetIDV2(RequestInternetId)
+      returns (InternetIDRelations);
+
+  // 通过关系获取BetaUnionID
+  rpc GetBetaUnionIDByInternetIDV2(RequestInternetId)
+      returns (ResponseBetaUnionID);
+
+  // 通过关系获取BetaUnionID
+  rpc GetBetaUnionIDsByInternetIDV2(RequestInternetIds)
+      returns (ResponseBetaUnionIDs);
+
+  // 通过关系获取InternetID
+  rpc GetInternetIDByBetaUnionIDV2(RequestUnionIDWithFlag)
+      returns (ResponseBetaInternetID);
+
+  // 更新InternetID，Where:Old-InternetID,ExtendTag
+  rpc UpdateInternetIDInRelation (UpdateInternetIDRequest) returns (ResponseResult);
+
+  // 更新缓存中用户关系
+  rpc UpdateInternetIDRelationToCache(SyncRequestInternetIds)
+      returns (ResponseResult);
+
+  // 添加InternetID关系表 (edit by 1037426)
+  rpc AddInternetIDRelation(InternetIDRelationItem) returns (ResponseResult);
+
+   // 批量通过关系获取InternetID
+  rpc BatchGetInternetIDByBetaUnionIDV2(RequestUnionIDsWithFlag)
+      returns (ResponseBetaInternetIDs);
+
+  // 批量获取UserCustCompany
+  rpc BatchGetUserCustCompany(RequestCustUserIds)
+      returns (ResponseUserCustCompanys);
+
+  // 根据角色批量获取UserCustCompany
+  rpc BatchGetUserCustCompanyByRole(RequestCustRoleId)
+      returns (ResponseUserCustCompanys);
+
+  // 根据userid批量获取UserCustCompany
+  rpc BatchGetUserCustCompanyByUserId(RequestInternalUserID)
+      returns (ResponseUserCustCompanys);
+
+  // 根据InternalUserIds获取CustCompanyId信息 (最多支持 1000个 internalUserId)
+  rpc GetUserCustCompanysByUserIds(Int32Ids)
+      returns (GetUserCustCompanysByUserIdsResp);
+
+  // 根据CustUserType更新UserCustCompany
+  rpc BatchUpdateUserCustCompany(RequestCustUserTypeId)
+      returns (ResponseResult);
+
+  // 根据角色更新UserCustCompany
+  rpc BatchUpdateRoleUserCustCompany(RequestRoleCustUserTypeId)
+      returns (ResponseResult);
+
+  // 根据BetaUnionId获取管理驾驶舱
+  rpc GetCustCompanyByUnionId(RequestUnionIdWithWwCorpId)
+      returns (CustCompanyItem);
+
+  // 根据角色更新UserExt
+  rpc UpdateRoleUserExt(RequestExtRoleId) returns (ResponseResult);
+
+  // 更新BadgeType，realName
+  rpc UpdateBadgeTypeRealName(RequestBadgeTypeRealName)
+      returns (ResponseResult);
+
+  // 更新驾驶舱和用户信息
+  rpc UpdateCustCompanyUser(RequestCustCompanyUser) returns (ResponseResult);
+
+  // 驾驶舱用户分配权限,0-已经有权限，1-新分配权限，2-未分配权限
+  rpc AddCustUsersVipRight(RequestCustUserVipTypeId)
+      returns (ResponseVipResult);
+
+  // 驾驶舱用户关闭权限,0-无相关权限，1-关闭权限成功
+  rpc CloseCustUsersVipRight(RequestCustUserVipTypeId)
+      returns (ResponseVipResult);
+
+  // 判断是否需要弹出BETA授权，这里会判断客户是否授权过，主要是给分享到微信，客户首次打开是否需要显示BETA客户授权
+  rpc IsNeedShowBetaAuth(RequestBetaUnionIdInternetId) returns (ResponseResult);
+
+  // 根据阿里云api网关授权应用获取CustCompany
+  rpc GetCustCompanyByAliAppId(RequestAliAppId) returns (CustCompanyItem);
+
+  // 获取所有驾驶舱
+  rpc GetAllCustCompany(RequestNoParams) returns (CustCompanyItems);
+
+  // 获取机构驾驶舱所有vip权限
+  rpc BatchGetCustVipType(RequestCustCompanyIDs) returns (ResponseCustVipTypes);
+
+  // 获取机构驾驶舱所有vip权限
+  rpc BatchGetCustCurrentVipType(RequestCustCompanyIDs) returns (ResponseCustVipTypes);
+
+  // 获取驾驶舱所有可用vip数量
+  rpc GetUserCustCompanyVipCount(RequestCustCompanyID)
+      returns (ResponseVipCountResults);
+
+  // 获取驾驶舱所有可用vip数量，附带是否Check StartTime
+  rpc GetUserCustCompanyVipCountExtendCheckStartTime(
+      GetUserCustCompanyVipCountExtendCheckStartTimeReq)
+      returns (ResponseVipCountResults);
+
+  // 获取驾驶舱所有vip（包括state=0）
+  rpc GetUserCustCompany(RequestCustCompanyID)
+      returns (ResponseUserCustCompanyDics);
+
+  // 根据vip获取用户
+  rpc GetUserIdsByVipType(RequestVipType) returns (ResponseInternalUserIDs);
+
+  // 获取用户工作经历
+  rpc GetUserWork(RequestInternalUserID) returns (ResponseWorkItems);
+
+  // 获取用户证书
+  rpc GetUserCertificate(RequestInternalUserID)
+      returns (ResponseCertificateItems);
+
+  // 更新身份公司
+  rpc UpdateRecCompany(RequestReCompany) returns (ResponseResult);
+
+  // 自动分配用户vip权限
+  rpc AutoAssignCustUserVip(RequestCustCompanyIdInternalUserIdForceAssign)
+      returns (ResponseResult);
+
+  // 更新缓存中用户
+  rpc UpdateUserInfoFromCache(SyncRequestInternalUserId)
+      returns (ResponseResult);
+
+  // 更新UserCustCompany
+  rpc UpdateUserCustCompanyFromCache(
+      SyncRequestCustCompanyIdWithInternalUserIds) returns (ResponseResult);
+
+  // 更新UserCustCompany
+  rpc DelUserCustCompanyFromCache(SyncRequestCustCompanyIdWithInternalUserIds)
+      returns (ResponseResult);
+
+  // Beta理财师后台管理员登录验证，接口使用类似Login接口
+  rpc CustCompanyLogin(RequestCustCompanyLogin)
+      returns (ResponseCustCompanyLogin);
+
+  // 批量获取管理驾驶舱
+  rpc BatchGetCustCompany(RequestCustCompanyIDs) returns (CustCompanyItems);
+
+  // 批量移除驾驶舱用户
+  rpc BatchDelCustUser(RequestInternalUserIDs) returns (ResponseResult);
+
+  // 根据外部用户ID获取CID
+  rpc GetUserByRefID(RequestUserRefIDUserRefType)returns (ResponseInternalUserID);
+
+  // 根据外部用户ID获取CID
+  rpc BatchGetUserByRefID(BatchGetUserByRefIDReq)returns (BatchGetUserByRefIDResp);
+
+  // 根据RefType获取RefID
+  rpc GetUserRefIDByRefType(RequestUserIdRefType) returns (ResponseUserRefID);
+
+  // 批量根据RefType获取RefID
+  rpc BatchGetUserRefIDByRefType(BatchGetUserRefIDByRefTypeReq) returns (BatchGetUserRefIDByRefTypeResp);
+
+  // 此接口返回所属部门对应的关联驾驶舱id
+  rpc GetRelationCustCompanyID(RequestRelationCustCompany)
+      returns (ResponseRelatioCustCompany);
+
+  // 批量获取userext用户信息(数量超过100个)
+  rpc GetUserExtInfos(RequestInternalUserIDs) returns (UserExtInfoItems);
+
+  // 新加或更新用户id和身份信息
+  rpc AddorUpdateUserVerifyIdentity(RequestIdAndIdentity)
+      returns (ResponseResult);
+
+  // 批量获取用户身份信息
+  // rpc BatchGetUserIdenty(RequestNoParams) returns(UserIdentites);
+
+  // 批量更新用户身份信息
+  // rpc BatchUpdateUserIdentity(UserIdentites) returns(ResponseResult);
+
+  // 获取用户身份信息认证状态
+  rpc GetUserVerifyIdentity(RequestInternalUserID) returns (GlobalIdentityItem);
+
+  // 获取金融库1001表机构ID，如果在驾驶舱，返回驾驶舱关联的机构ID
+  rpc GetInstitutionIDByCustCompanyID(RequestCustCompanyID)
+      returns (ResponseRelatedInstitutionID);
+
+  // 更新管理驾驶舱公司
+  rpc UpdateCustCompanyID(UserExtInfoItem) returns (ResponseResult);
+
+  // 获取用户头像Base64的MD5值
+  rpc GetUserPhotoBase64MD5Code(RequestInternalUserID) returns (ResponseResult);
+
+  // 从驾驶舱批量移除用户
+  rpc BatchRemoveFromCust(RequestInternalUserIDs) returns (ResponseResult);
+
+  // 获取所有部门关联驾驶舱配置
+  rpc GetAllDeptRelationCompany(RequestNoParams)
+      returns (ResponseDeptRelationCompanyItems);
+
+  // 设置第三方Id
+  rpc SetCustCompanyTppId(SetCustCompanyTppIdReq) returns (BaseResult);
+
+  // 设置UserRefType映射
+  rpc SetCustCompanyUserRefType(SetCustCompanyUserRefTypeReq) returns(BaseResult);
+
+  // 根据关联驾驶舱获取驾驶舱
+  rpc GetCustCompanyIDByRelationCustCompanyID(GetCustCompanyIDByRelationCustCompanyIDReq) returns(GetCustCompanyIDByRelationCustCompanyIDResp); 
+
+  // 识别小程序码，开通VIP和更新公司绑定关系
+  rpc UpdateCustCompanyForApp(UpdateCustCompanyForAppReq) returns(BaseResult);
+
+  // 更新公司IdFor企微场景(修改用户的公司绑定关系) (edit by 1037426)
+  rpc UpdateCustCompanyForWxWork(UpdateCustCompanyForWxWorkReq) returns(BaseResult);
+
+  // 更新企业微信公司购买的VIP信息  (add by 1037426)
+  rpc UpdateWxCustCompanyVipInfo(UpdateWxCustCompanyVipInfoReq) returns(BaseResult);
+
+  // 批量删除企业微信员工
+  rpc DeleteCustUserOrgByOIDs(DeleteCustUserOrgByOIDsReq) returns(BaseResult);
+}

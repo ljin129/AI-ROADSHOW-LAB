@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>$(NetVersion)</TargetFramework>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Beta.Starter.Web" Version="$(BetaVersion)" />
+		<PackageReference Include="Beta.Framework" Version="$(BetaFrameworkVersion)" />
+		<PackageReference Include="Beta.RedisExtensions.StackExchangeExt" Version="1.0.0.5" />
+		<PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
+		<PackageReference Include="OpenTelemetry.Instrumentation.MySqlData" Version="$(OpenTelemetryMySqlDataVersion)" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="$(MicrosoftAspNetCoreMvcNewtonsoftJsonVersion)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Beta.AIRoadshow.Application\Beta.AIRoadshow.Application.csproj" />
+	</ItemGroup>
+</Project>

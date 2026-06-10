@@ -1,0 +1,72 @@
+﻿syntax = "proto3";
+
+import "BetaAuthEntity.proto";
+import "BetaAuthEnumEntity.proto";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+package Beta.Auth.VIP;
+
+
+
+// 获取提醒的VIP项目请求
+message GetVIPItemsByRemindReq{
+    // 客户公司ID列表
+    repeated int64 custCompanyIds = 1;
+
+    // VIP类型列表
+    repeated UserVipTypeEnum vipType = 2;
+    // 天数
+    int32 days=3;
+}
+
+// 返回提醒的VIP项目
+message GetVIPItemsByRemindResp{
+    // 基础结果
+    BaseResult result=1;
+    // VIP项目列表
+    repeated VIPItemLite vipItems=2;
+}
+
+//设置用户Vip
+message SetUserVipReq{
+    int64 BetaUnionId=1;
+    UserVipTypeEnum UserVIP=2;
+    google.protobuf.Timestamp EndDate=3;
+}
+
+//设置用户Vip 延长日期
+message SetUserVipDateExtendDateReq{
+    int64 BetaUnionId=1;
+    UserVipTypeEnum UserVIP=2;
+    int32 date=3;
+}
+
+
+
+// 根据VIP类型列表获取用户Ids
+message GetBetaUnionIdsByVipTypesReq{
+    repeated UserVipTypeEnum UserVIPs=1;
+}
+
+message GetBetaUnionIdsByVipTypesResp{
+    repeated int64 BetaUnionIds=1;
+}
+
+service VIPService {
+    
+// 获取提醒的VIP项目
+rpc GetVIPItemsByRemind(GetVIPItemsByRemindReq) returns (GetVIPItemsByRemindResp);
+
+// 设置用户个人VIP
+rpc SetUserVip(SetUserVipReq) returns(BaseResult);
+
+// 设置用户个人VIP 延长日期
+rpc SetUserVipDateExtendDate(SetUserVipDateExtendDateReq) returns(BaseResult);
+
+// 根据vip列表获取用户Ids列表
+rpc GetBetaUnionIdsByVipTypes(GetBetaUnionIdsByVipTypesReq) returns(GetBetaUnionIdsByVipTypesResp);
+
+}

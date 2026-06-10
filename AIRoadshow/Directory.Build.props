@@ -1,0 +1,15 @@
+﻿<Project>
+
+	<PropertyGroup>
+		<NetVersion>net8.0</NetVersion>
+		<BetaFrameworkVersion>2.7.5.5</BetaFrameworkVersion>
+		<BetaVersion>2.12.5.3</BetaVersion>
+		<GrpcToolsVersion>2.51.0</GrpcToolsVersion>
+		<MySqlDataVersion>8.0.28</MySqlDataVersion>
+		<AutoMapperVersion>12.0.0</AutoMapperVersion>
+		<SerilogAspNetCoreVersion>6.0.1</SerilogAspNetCoreVersion>
+		<OpenTelemetryMySqlDataVersion>1.0.0-beta.7</OpenTelemetryMySqlDataVersion>
+		<MicrosoftAspNetCoreMvcNewtonsoftJsonVersion>6.0.9</MicrosoftAspNetCoreMvcNewtonsoftJsonVersion>
+	</PropertyGroup>
+
+</Project>

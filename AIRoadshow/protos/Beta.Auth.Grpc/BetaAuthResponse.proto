@@ -1,0 +1,119 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Beta.Grpc.Auth.Response";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "BetaAuthEnumEntity.proto";
+import "BetaAuthEntity.proto";
+
+package Beta.Auth;
+
+message ResponseInternalUserID { int32 UserId = 1; }
+message LoginResponse {
+  google.protobuf.StringValue Message = 1;
+  google.protobuf.StringValue SessionID = 2;
+  AuthUserInfoItem AuthUserInfo = 3;
+  repeated ServiceNodeItem ServiceNodes = 4;
+  repeated AuthFuncItem AuthFuncs = 5;
+  repeated AuthModuleItem AuthModules = 6;
+  repeated AuthSecItem AuthSecs = 7;
+  LoginStatusEnum LoginStatus = 8;
+  UserInfoItem UserInfo = 9;
+  UserExtInfoItem UserExtInfo = 10;
+  // uparms
+  google.protobuf.StringValue Uparms = 11;
+}
+
+message ResponseUserInfoItems { repeated UserInfoItem UserInfoItems = 1; }
+
+message ResponseUserSimpleInfoItems {
+  repeated UserSimpleInfoItem UserInfoItems = 1;
+}
+
+message ResponseBetaUnionID { int64 BetaUnionID = 1; }
+
+message ResponseBetaUnionIDs { repeated ResponseBetaUnionID Result = 1; }
+
+message ResponseBetaInternetID { int64 BetaInternetID = 1; }
+
+message ResponseUserCustCompanys {
+  repeated UserCustCompanyItem UserCustCompanyItems = 1;
+}
+
+message ResponseResult {
+  bool Result = 1;
+  google.protobuf.StringValue Msg = 2;
+}
+
+message ResponseInternalUserIDs { repeated int32 UserIds = 1; }
+
+message ResponseVipResult { map<int32, ResponseInternalUserIDs> Result = 1; }
+
+message InternetIDRelations { repeated InternetIDRelationItem result = 1; }
+
+message AreaItemDics { map<int32, AreaItem> Result = 1; }
+
+message CustCompanyItems { repeated CustCompanyItem Result = 1; }
+
+message ResponseCustVipTypes { map<int32, UserVipTypeEnum> Result = 1; }
+
+message BatchGetUserByRefIDResp{
+	map<string,int32> UserIdsMapper=1;
+}
+
+message BatchGetUserRefIDByRefTypeResp{
+	map<int32,string> UserIdsMapper=1;
+}
+
+message ResponseUserCustCompanyDics {
+  map<int32, UserCustCompanyItem> Result = 1;
+}
+
+message ResponseVipCountResult {
+  int32 TotalCount = 1;
+  int32 AssignedCount = 2;
+}
+
+message ResponseVipCountResults {
+  map<int32, ResponseVipCountResult> Result = 1;
+}
+
+message ResponseWorkItems { repeated WorkItem Result = 1; }
+
+message ResponseCertificateItems { repeated CertificateItem Result = 1; }
+
+message ResponseCustCompanyLogin {
+  LoginStatusEnum LoginStatus = 1;
+  LoginResponse Response = 2;
+}
+
+message DecryptMsg { string Msg = 1; }
+
+message ResponseUserRefID { string UserRefID = 1; }
+
+message ResponseUserVipTypeNames { map<int32, string> Result = 1; }
+
+message ResponseRelatioCustCompany { int32 RelationCustCompanyID = 1; }
+
+message ResponseRelatedInstitutionID { int32 RelatedInstitutionID = 1; }
+
+message ResponseBetaInternetIDs {
+  map<int64, int64> BetaUnionIdInternetIDs = 1;
+}
+
+message ResponseDeptRelationCompanyItems {
+  repeated DeptRelationCompanyItem DeptRelationCompanyItems = 1;
+}
+
+// 根据InternalUserIds获取CustCompanyId信息
+message GetUserCustCompanysByUserIdsResp {
+  BaseResult result = 1;
+  repeated UserCustCompanyLite datas = 2;
+}
+
+// 根据关联驾驶舱获取驾驶舱 响应
+message GetCustCompanyIDByRelationCustCompanyIDResp{
+	int32 CustCompanyID = 1;
+}

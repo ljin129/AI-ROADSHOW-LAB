@@ -1,0 +1,26 @@
+﻿syntax = "proto3";
+
+
+option csharp_namespace = "Beta.Grpc.Auth";
+
+import "google/protobuf/duration.proto";  
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "BetaAuthEntity.proto";
+import "BetaAuthRequest.proto";
+import "BetaAuthResponse.proto";
+
+package Beta.Auth;
+
+service JobService {
+  // 更新vip信息
+  rpc UpdateVipJob(RequestNoParams) returns (ResponseResult);
+  // 更新用户信息
+  rpc UpdateUserJob(RequestNoParams) returns (ResponseResult);
+  // 更新session信息
+  rpc UpdateSessionJob(RequestNoParams) returns (ResponseResult);
+  // 更新right信息
+  rpc UpdateRightJob(RequestNoParams) returns (ResponseResult);
+}
+
+

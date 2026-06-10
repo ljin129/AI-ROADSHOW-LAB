@@ -1,0 +1,140 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Beta.Grpc.Auth";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "BetaAuthEntity.proto";
+import "BetaAuthRequest.proto";
+import "BetaAuthResponse.proto";
+
+package Beta.Auth;
+
+service UserService {
+  // 根据sessionid获取internaluserid
+  rpc GetInternalUserIDBySessionId(RequestSessionId)
+      returns (ResponseInternalUserID);
+
+  // 根据unionid获取userinfo
+  rpc GetUserInfoByUnionID(RequestUnionID) returns (UserInfoItem);
+
+  // 根据internaluserid获取userinfo
+  rpc GetUserInfoByInternalUserID(RequestInternalUserID) returns (UserInfoItem);
+
+  // 根据userid获取userinfo
+  rpc GetUserInfoByUserId(RequestUserId) returns (UserInfoItem);
+
+  // 根据unionid获取userinfo
+  rpc GetUserInfoByUnionIDCustCompanyID(RequestUnionIDCustID)
+      returns (UserInfoItem);
+
+  // 根据internaluserid获取userinfo
+  rpc GetUserInfoByInternalUserIDCustCompanyID(RequestInternalUserIDCustID)
+      returns (UserInfoItem);
+
+  // 根据userid获取userinfo
+  rpc GetUserInfoByUserIdCustCompanyID(RequestUserIdCustID)
+      returns (UserInfoItem);
+
+  // 获取用户基本信息 (edit by 1037426)
+  rpc GetUserInfoByInternalUserIDWwCorpId(RequestInternalUserIDWithWwCorpId)
+      returns (UserInfoItem);
+
+  // 获取登录信息
+  rpc Login(LoginRequest) returns (LoginResponse);
+
+  // 创建新会话
+  rpc CreateSession(CreateSessionReq) returns (BaseResult);
+
+  // 登入后通知事件
+  rpc AfterLogin(AfterLoginReq) returns (BaseResult);
+
+  // 批量获取用户
+  rpc GetUserInfos(RequestInternalUserIDs) returns (ResponseUserInfoItems);
+
+  // 批量获取用户
+  rpc GetUserSimpleInfos(RequestInternalUserIDs)
+      returns (ResponseUserSimpleInfoItems);
+
+  // 获取早报精简用户信息
+  rpc GetUserForFinance(RequestUserWithCorpId) returns (UserInfoItem);
+
+  // 获取早报精简用户信息
+  rpc GetUserForFinanceByCustCompanyID(RequestInternalUserIDCustID)
+      returns (UserInfoItem);
+
+  // 获取微店用户信息 
+  rpc GetUserForShop(RequestUserWithCorpId) returns (UserInfoItem);
+
+  // 获取微店用户信息
+  rpc GetUserForShopByCustCompanyID(RequestInternalUserIDCustID)
+      returns (UserInfoItem);
+
+  // 根据sessionid获取betaunionid
+  rpc GetBetaUnionIDBySessionId(RequestSessionId) returns (ResponseBetaUnionID);
+
+  // 批量所有用户
+  rpc GetAllVipUserInfos(RequestInternalUserIDs)
+      returns (ResponseUserInfoItems);
+
+  // 获取所有地区列表
+  rpc GetAllArea(RequestNoParams) returns (AreaItemDics);
+
+  // 判断给定会话ID的会话是否存在
+  rpc InSession(RequestSessionIdWithIP) returns (SessionItem);
+
+  // 更新用户信息
+  rpc UpdateUserInfo(UserInfoItem) returns (ResponseResult);
+
+  // 根据betaunionid批量获取用户
+  rpc BatchGetUserInfoByBetaUnionIds(RequestBetaUnionIdsWithCustCompanyId)
+      returns (ResponseUserInfoItems);
+
+  // 根据枚举值获取对应中文描述
+  rpc GetUserRecordFlagTypeEnumDescription(RequestEnum)
+      returns (ResponseResult);
+
+  // 获取省份
+  rpc GetProvince(RequestNoParams) returns (AreaItemDics);
+
+  // 根据省份获取城市列表
+  rpc GetCity(RequestAreaCodeAreaID) returns (AreaItemDics);
+
+  // 根据省份获取城市列表
+  // rpc GetCity(RequestAreaID) returns(AreaItemDics);
+
+  // 获取所有城市列表
+  rpc GetAllCity(RequestNoParams) returns (AreaItemDics);
+
+  // 根据城市获取县区列表
+  rpc GetCounty(RequestAreaCodeAreaID) returns (AreaItemDics);
+
+  // 根据城市获取县区列表
+  // rpc GetCounty(RequestAreaID) returns(AreaItemDics);
+
+  // 获取地区
+  rpc GetArea(RequestAreaCodeAreaID) returns (AreaItem);
+
+  // 获取地区
+  // rpc GetArea(RequestAreaID) returns(AreaItem);
+
+  // 解密uparms
+  rpc DecryptUparms(RequestUparms) returns (DecryptMsg);
+
+  // 获取viptype枚举类型中文名称
+  rpc GetVipEnumTypeNames(RequestUserVipTypes)
+      returns (ResponseUserVipTypeNames);
+
+  // 更新用户信息
+  rpc UpdateUserForPerson(UserInfoItem) returns (ResponseResult);
+
+  // 更新个人资料用户信息
+  rpc UpdateUserForRef(UserInfoItem) returns (ResponseResult);
+
+  // 新增或修改外部用户关系
+  rpc AddOrUpdateUserRef(UserRefItem) returns (ResponseResult);
+
+  // 新增或修改外部用户关系
+  rpc AddOrUpdateUserRefForSpecial(UserRefItem) returns (ResponseResult);
+}

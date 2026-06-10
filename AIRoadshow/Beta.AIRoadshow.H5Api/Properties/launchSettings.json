@@ -1,0 +1,28 @@
+{
+  "profiles": {
+    "Beta.AIDigiTalker.H5Api": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "beta.aidigitalker.h5api/doc",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:2025"
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  },
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:29521/",
+      "sslPort": 44399
+    }
+  }
+}

@@ -1,0 +1,96 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1AF24271-F8EE-4E14-8EE4-E30F01E13A37}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "protos", "protos", "{D9B2B9F9-8197-4D86-ADDC-232078FFB015}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beta.AIRoadshow.H5Api", "Beta.AIRoadshow.H5Api\Beta.AIRoadshow.H5Api.csproj", "{5DD2CFD4-6FA9-40E1-BFC7-EAD73FC68B31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beta.AIRoadshow.PCApi", "Beta.AIRoadshow.PCApi\Beta.AIRoadshow.PCApi.csproj", "{C8CF738F-E130-7250-2485-EF8FC9C5E575}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beta.AIRoadshow.Job", "Beta.AIRoadshow.Job\Beta.AIRoadshow.Job.csproj", "{DFE00BA4-6EE8-2D01-1B8E-14FFE3A91C6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beta.AIRoadshow.Service", "Beta.AIRoadshow.Service\Beta.AIRoadshow.Service.csproj", "{63EA36D4-4273-6F2C-F927-A6E176CE29A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beta.AIRoadshow.Application", "Beta.AIRoadshow.Application\Beta.AIRoadshow.Application.csproj", "{1E30F628-DF79-7FBC-D8EC-44705A89B1C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beta.AIRoadshow.DataAccess", "Beta.AIRoadshow.DataAccess\Beta.AIRoadshow.DataAccess.csproj", "{33EA8FED-A73A-84FD-4BC0-5D81D6D62628}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beta.AIRoadshow.Entity", "Beta.AIRoadshow.Entity\Beta.AIRoadshow.Entity.csproj", "{808BA2D2-44B4-41A8-3899-CD290987B022}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Beta.Serial", "Beta.Serial", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		protos\Beta.Serial\SerialService.proto = protos\Beta.Serial\SerialService.proto
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beta.AIRoadshow.Common", "Beta.AIRoadshow.Common\Beta.AIRoadshow.Common.csproj", "{87A420C1-1346-4CA1-9151-FA1BBF4D139C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Beta.Auth.Grpc", "Beta.Auth.Grpc", "{26C87D4F-069F-4B14-89BF-5840A8C833E0}"
+	ProjectSection(SolutionItems) = preProject
+		protos\Beta.Auth.Grpc\AuthMenu.proto = protos\Beta.Auth.Grpc\AuthMenu.proto
+		protos\Beta.Auth.Grpc\BetaAuthEntity.proto = protos\Beta.Auth.Grpc\BetaAuthEntity.proto
+		protos\Beta.Auth.Grpc\BetaAuthEnumEntity.proto = protos\Beta.Auth.Grpc\BetaAuthEnumEntity.proto
+		protos\Beta.Auth.Grpc\BetaAuthJob.proto = protos\Beta.Auth.Grpc\BetaAuthJob.proto
+		protos\Beta.Auth.Grpc\BetaAuthRequest.proto = protos\Beta.Auth.Grpc\BetaAuthRequest.proto
+		protos\Beta.Auth.Grpc\BetaAuthResponse.proto = protos\Beta.Auth.Grpc\BetaAuthResponse.proto
+		protos\Beta.Auth.Grpc\BetaAuthUser.proto = protos\Beta.Auth.Grpc\BetaAuthUser.proto
+		protos\Beta.Auth.Grpc\BetaAuthUserExt.proto = protos\Beta.Auth.Grpc\BetaAuthUserExt.proto
+		protos\Beta.Auth.Grpc\BetaVIP.proto = protos\Beta.Auth.Grpc\BetaVIP.proto
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5DD2CFD4-6FA9-40E1-BFC7-EAD73FC68B31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DD2CFD4-6FA9-40E1-BFC7-EAD73FC68B31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DD2CFD4-6FA9-40E1-BFC7-EAD73FC68B31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DD2CFD4-6FA9-40E1-BFC7-EAD73FC68B31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8CF738F-E130-7250-2485-EF8FC9C5E575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8CF738F-E130-7250-2485-EF8FC9C5E575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8CF738F-E130-7250-2485-EF8FC9C5E575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8CF738F-E130-7250-2485-EF8FC9C5E575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFE00BA4-6EE8-2D01-1B8E-14FFE3A91C6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFE00BA4-6EE8-2D01-1B8E-14FFE3A91C6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFE00BA4-6EE8-2D01-1B8E-14FFE3A91C6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFE00BA4-6EE8-2D01-1B8E-14FFE3A91C6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63EA36D4-4273-6F2C-F927-A6E176CE29A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63EA36D4-4273-6F2C-F927-A6E176CE29A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63EA36D4-4273-6F2C-F927-A6E176CE29A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63EA36D4-4273-6F2C-F927-A6E176CE29A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E30F628-DF79-7FBC-D8EC-44705A89B1C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E30F628-DF79-7FBC-D8EC-44705A89B1C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E30F628-DF79-7FBC-D8EC-44705A89B1C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E30F628-DF79-7FBC-D8EC-44705A89B1C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33EA8FED-A73A-84FD-4BC0-5D81D6D62628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33EA8FED-A73A-84FD-4BC0-5D81D6D62628}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33EA8FED-A73A-84FD-4BC0-5D81D6D62628}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33EA8FED-A73A-84FD-4BC0-5D81D6D62628}.Release|Any CPU.Build.0 = Release|Any CPU
+		{808BA2D2-44B4-41A8-3899-CD290987B022}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{808BA2D2-44B4-41A8-3899-CD290987B022}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{808BA2D2-44B4-41A8-3899-CD290987B022}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{808BA2D2-44B4-41A8-3899-CD290987B022}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87A420C1-1346-4CA1-9151-FA1BBF4D139C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87A420C1-1346-4CA1-9151-FA1BBF4D139C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87A420C1-1346-4CA1-9151-FA1BBF4D139C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87A420C1-1346-4CA1-9151-FA1BBF4D139C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {D9B2B9F9-8197-4D86-ADDC-232078FFB015}
+		{26C87D4F-069F-4B14-89BF-5840A8C833E0} = {D9B2B9F9-8197-4D86-ADDC-232078FFB015}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {84DE15F2-5795-48F1-ACBF-7747B148E5C5}
+	EndGlobalSection
+EndGlobal

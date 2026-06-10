@@ -1,0 +1,2426 @@
+uid=3_0 RootWebArea url="https://localhost:44351/Beta.AIRoadshow.PCApi/doc/v1/swagger.json"
+  uid=3_1 StaticText "{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "web-airoadshow-pcapi",
+    "version": "v1"
+  },
+  "paths": {
+    "/Beta.AIRoadshow.PCApi/AbilityDimension/SaveAbilityDimension": {
+      "post": {
+        "tags": [
+          "AbilityDimension"
+        ],
+        "summary": "新增能力维度信息",
+        "parameters": [
+          {
+            "name": "traceparent",
+            "in": "header",
+            "description": "请求跟踪上下文（可选）",
+            "example": "00-593013a8997147f129a1d5f0b6a5f5a1-bc6f7b51fc7ef236-01"
+          },
+          {
+            "name": "tracestate",
+            "in": "header",
+            "description": "调用方appid及调用方当前机器ip（可选）",
+            "example": "client-app-id=web-airoadshow-pcapi,client-ip=10.10.22.242"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.AbilityDimensionSaveRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.AbilityDimensionSaveRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.AbilityDimensionSaveRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.AbilityDimensionSaveRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Beta.AIRoadshow.PCApi/AbilityDimension/GetAbilityDimensionTree": {
+      "get": {
+        "tags": [
+          "AbilityDimension"
+        ],
+        "summary": "查询能力维度树状结构的全量数据",
+        "parameters": [
+          {
+            "name": "traceparent",
+            "in": "header",
+            "description": "请求跟踪上下文（可选）",
+            "example": "00-9802da2f263fa6724a3adb014eeaf1e5-46264bc683433490-01"
+          },
+          {
+            "name": "tracestate",
+            "in": "header",
+            "description": "调用方appid及调用方当前机器ip（可选）",
+            "example": "client-app-id=web-airoadshow-pcapi,client-ip=10.10.22.242"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Collections.Generic.IEnumerable`1[[Beta.AIRoadshow.Entity.Dto.Response.AbilityDimensionTreeResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Collections.Generic.IEnumerable`1[[Beta.AIRoadshow.Entity.Dto.Response.AbilityDimensionTreeResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Collections.Generic.IEnumerable`1[[Beta.AIRoadshow.Entity.Dto.Response.AbilityDimensionTreeResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Beta.AIRoadshow.PCApi/AbilityDimension/RemoveAbilityDimension": {
+      "post": {
+        "tags": [
+          "AbilityDimension"
+        ],
+        "summary": "根据能力维度ID删除数据，同时删除下属子级",
+        "parameters": [
+          {
+            "name": "traceparent",
+            "in": "header",
+            "description": "请求跟踪上下文（可选）",
+            "example": "00-57a08d8bf60a82163054bf2a3ee1ac8f-4834300a4d71cf10-01"
+          },
+          {
+            "name": "tracestate",
+            "in": "header",
+            "description": "调用方appid及调用方当前机器ip（可选）",
+            "example": "client-app-id=web-airoadshow-pcapi,client-ip=10.10.22.242"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.AbilityDimensionRemoveRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.AbilityDimensionRemoveRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.AbilityDimensionRemoveRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.AbilityDimensionRemoveRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Beta.AIRoadshow.PCApi/AbilityDimension/UpdateAbilityDimension": {
+      "post": {
+        "tags": [
+          "AbilityDimension"
+        ],
+        "summary": "根据能力维度ID更新单条数据内容",
+        "parameters": [
+          {
+            "name": "traceparent",
+            "in": "header",
+            "description": "请求跟踪上下文（可选）",
+            "example": "00-39645ef60de2f126578bc5121e1a1816-91cee03c662561f3-01"
+          },
+          {
+            "name": "tracestate",
+            "in": "header",
+            "description": "调用方appid及调用方当前机器ip（可选）",
+            "example": "client-app-id=web-airoadshow-pcapi,client-ip=10.10.22.242"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.AbilityDimensionUpdateRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.AbilityDimensionUpdateRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.AbilityDimensionUpdateRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.AbilityDimensionUpdateRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Beta.AIRoadshow.PCApi/Activity/GetActivityList": {
+      "get": {
+        "tags": [
+          "Activity"
+        ],
+        "summary": "查询路演活动列表",
+        "parameters": [
+          {
+            "name": "PageIndex",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "StartDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "EndDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "PublishStatus",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "traceparent",
+            "in": "header",
+            "description": "请求跟踪上下文（可选）",
+            "example": "00-bf95c0f301ae0349bc8aa804f33fe11f-2c67f957457bfe43-01"
+          },
+          {
+            "name": "tracestate",
+            "in": "header",
+            "description": "调用方appid及调用方当前机器ip（可选）",
+            "example": "client-app-id=web-airoadshow-pcapi,client-ip=10.10.22.242"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityListResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityListResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityListResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Beta.AIRoadshow.PCApi/Activity/GetActivityStatistics": {
+      "get": {
+        "tags": [
+          "Activity"
+        ],
+        "summary": "查询路演活动统计",
+        "parameters": [
+          {
+            "name": "traceparent",
+            "in": "header",
+            "description": "请求跟踪上下文（可选）",
+            "example": "00-a5d405bbf9f473b85b96b9f38d509475-fe87b6e75362871e-01"
+          },
+          {
+            "name": "tracestate",
+            "in": "header",
+            "description": "调用方appid及调用方当前机器ip（可选）",
+            "example": "client-app-id=web-airoadshow-pcapi,client-ip=10.10.22.242"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityStatisticsResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityStatisticsResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityStatisticsResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Beta.AIRoadshow.PCApi/Activity/GetActivityDetail": {
+      "get": {
+        "tags": [
+          "Activity"
+        ],
+        "summary": "查询活动详情",
+        "parameters": [
+          {
+            "name": "activityId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "traceparent",
+            "in": "header",
+            "description": "请求跟踪上下文（可选）",
+            "example": "00-25630ec879d1401ce6e4897900fea630-f9b744301cbcf53e-01"
+          },
+          {
+            "name": "tracestate",
+            "in": "header",
+            "description": "调用方appid及调用方当前机器ip（可选）",
+            "example": "client-app-id=web-airoadshow-pcapi,client-ip=10.10.22.242"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityDetailResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityDetailResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityDetailResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Beta.AIRoadshow.PCApi/Activity/UpdateActivity": {
+      "post": {
+        "tags": [
+          "Activity"
+        ],
+        "summary": "根据活动ID更新活动主表信息",
+        "parameters": [
+          {
+            "name": "traceparent",
+            "in": "header",
+            "description": "请求跟踪上下文（可选）",
+            "example": "00-2507465815ca7872f002afcfb9ce531f-36a9305acc7d7cb6-01"
+          },
+          {
+            "name": "tracestate",
+            "in": "header",
+            "description": "调用方appid及调用方当前机器ip（可选）",
+            "example": "client-app-id=web-airoadshow-pcapi,client-ip=10.10.22.242"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.ActivityUpdateRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.ActivityUpdateRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.ActivityUpdateRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.ActivityUpdateRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Beta.AIRoadshow.PCApi/Activity/SaveRole": {
+      "post": {
+        "tags": [
+          "Activity"
+        ],
+        "summary": "新增角色信息",
+        "parameters": [
+          {
+            "name": "traceparent",
+            "in": "header",
+            "description": "请求跟踪上下文（可选）",
+            "example": "00-d99e994baaf3823bab9111e087819db3-640b70ece7dfd4da-01"
+          },
+          {
+            "name": "tracestate",
+            "in": "header",
+            "description": "调用方appid及调用方当前机器ip（可选）",
+            "example": "client-app-id=web-airoadshow-pcapi,client-ip=10.10.22.242"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.RoleSaveRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.RoleSaveRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.RoleSaveRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.RoleSaveRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Beta.AIRoadshow.PCApi/Activity/UpdateRole": {
+      "post": {
+        "tags": [
+          "Activity"
+        ],
+        "summary": "根据角色ID更新角色信息",
+        "parameters": [
+          {
+            "name": "traceparent",
+            "in": "header",
+            "description": "请求跟踪上下文（可选）",
+            "example": "00-c999f6f713de6629d0becdd099817ab9-bc04000408f81c23-01"
+          },
+          {
+            "name": "tracestate",
+            "in": "header",
+            "description": "调用方appid及调用方当前机器ip（可选）",
+            "example": "client-app-id=web-airoadshow-pcapi,client-ip=10.10.22.242"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.RoleUpdateRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.RoleUpdateRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.RoleUpdateRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.RoleUpdateRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Beta.AIRoadshow.PCApi/Activity/GetActivityQuestionPage": {
+      "get": {
+        "tags": [
+          "Activity"
+        ],
+        "summary": "查询活动题库分页",
+        "parameters": [
+          {
+            "name": "ActivityId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "Keyword",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "StageId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "PageIndex",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "traceparent",
+            "in": "header",
+            "description": "请求跟踪上下文（可选）",
+            "example": "00-fa4a2ce6dd67f7a58e9202a01d7be24a-84329083c68183a3-01"
+          },
+          {
+            "name": "tracestate",
+            "in": "header",
+            "description": "调用方appid及调用方当前机器ip（可选）",
+            "example": "client-app-id=web-airoadshow-pcapi,client-ip=10.10.22.242"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityQuestionPageResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityQuestionPageResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityQuestionPageResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Beta.AIRoadshow.PCApi/Activity/GetActivityBusinessStageList": {
+      "get": {
+        "tags": [
+          "Activity"
+        ],
+        "summary": "查询活动业务环节列表",
+        "parameters": [
+          {
+            "name": "activityId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "traceparent",
+            "in": "header",
+            "description": "请求跟踪上下文（可选）",
+            "example": "00-d0421d555ca8149f634a8aa83f34f9ae-493c4ac870cabf20-01"
+          },
+          {
+            "name": "tracestate",
+            "in": "header",
+            "description": "调用方appid及调用方当前机器ip（可选）",
+            "example": "client-app-id=web-airoadshow-pcapi,client-ip=10.10.22.242"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Collections.Generic.IEnumerable`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityBusinessStageResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Collections.Generic.IEnumerable`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityBusinessStageResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Collections.Generic.IEnumerable`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityBusinessStageResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Beta.AIRoadshow.PCApi/Activity/SaveBusinessStage": {
+      "post": {
+        "tags": [
+          "Activity"
+        ],
+        "summary": "新增业务环节信息",
+        "parameters": [
+          {
+            "name": "traceparent",
+            "in": "header",
+            "description": "请求跟踪上下文（可选）",
+            "example": "00-bb33f37053bd058cacab0419bbd30462-d552013077847ba8-01"
+          },
+          {
+            "name": "tracestate",
+            "in": "header",
+            "description": "调用方appid及调用方当前机器ip（可选）",
+            "example": "client-app-id=web-airoadshow-pcapi,client-ip=10.10.22.242"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.BusinessStageSaveRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.BusinessStageSaveRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.BusinessStageSaveRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.BusinessStageSaveRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Beta.AIRoadshow.PCApi/Activity/UpdateBusinessStage": {
+      "post": {
+        "tags": [
+          "Activity"
+        ],
+        "summary": "根据业务环节ID更新业务环节信息",
+        "parameters": [
+          {
+            "name": "traceparent",
+            "in": "header",
+            "description": "请求跟踪上下文（可选）",
+            "example": "00-aa5606b3042256821d31ee728f72da1c-c1f9089ecec08223-01"
+          },
+          {
+            "name": "tracestate",
+            "in": "header",
+            "description": "调用方appid及调用方当前机器ip（可选）",
+            "example": "client-app-id=web-airoadshow-pcapi,client-ip=10.10.22.242"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.BusinessStageUpdateRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.BusinessStageUpdateRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.BusinessStageUpdateRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.BusinessStageUpdateRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Beta.AIRoadshow.PCApi/Activity/SaveQuestion": {
+      "post": {
+        "tags": [
+          "Activity"
+        ],
+        "summary": "新增题目信息",
+        "parameters": [
+          {
+            "name": "traceparent",
+            "in": "header",
+            "description": "请求跟踪上下文（可选）",
+            "example": "00-7f9e0fa0b3ace1a149461712af732df4-4c455d136abe3769-01"
+          },
+          {
+            "name": "tracestate",
+            "in": "header",
+            "description": "调用方appid及调用方当前机器ip（可选）",
+            "example": "client-app-id=web-airoadshow-pcapi,client-ip=10.10.22.242"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.QuestionSaveRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.QuestionSaveRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.QuestionSaveRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.QuestionSaveRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Beta.AIRoadshow.PCApi/Activity/UpdateQuestion": {
+      "post": {
+        "tags": [
+          "Activity"
+        ],
+        "summary": "根据题目ID更新题目信息",
+        "parameters": [
+          {
+            "name": "traceparent",
+            "in": "header",
+            "description": "请求跟踪上下文（可选）",
+            "example": "00-4a8fe12d28e6c490f5300ffbe2efc716-ffc7a99ee57b79ca-01"
+          },
+          {
+            "name": "tracestate",
+            "in": "header",
+            "description": "调用方appid及调用方当前机器ip（可选）",
+            "example": "client-app-id=web-airoadshow-pcapi,client-ip=10.10.22.242"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.QuestionUpdateRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.QuestionUpdateRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.QuestionUpdateRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.QuestionUpdateRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Beta.AIRoadshow.PCApi/Activity/ExtractActivityInfo": {
+      "post": {
+        "tags": [
+          "Activity"
+        ],
+        "summary": "提交活动信息提取任务",
+        "parameters": [
+          {
+            "name": "traceparent",
+            "in": "header",
+            "description": "请求跟踪上下文（可选）",
+            "example": "00-5d593f2b8015d054612ace4a1e241beb-ea49e29c571dee64-01"
+          },
+          {
+            "name": "tracestate",
+            "in": "header",
+            "description": "调用方appid及调用方当前机器ip（可选）",
+            "example": "client-app-id=web-airoadshow-pcapi,client-ip=10.10.22.242"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.ActivityExtractRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.ActivityExtractRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.ActivityExtractRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.ActivityExtractRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityExtractSubmitResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityExtractSubmitResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityExtractSubmitResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Beta.AIRoadshow.PCApi/Activity/ExtractQuestionInfo": {
+      "post": {
+        "tags": [
+          "Activity"
+        ],
+        "summary": "提交题库信息提取任务",
+        "parameters": [
+          {
+            "name": "traceparent",
+            "in": "header",
+            "description": "请求跟踪上下文（可选）",
+            "example": "00-7b5751a4f36b654fd17545b318fa37b0-f3403f08b85843a4-01"
+          },
+          {
+            "name": "tracestate",
+            "in": "header",
+            "description": "调用方appid及调用方当前机器ip（可选）",
+            "example": "client-app-id=web-airoadshow-pcapi,client-ip=10.10.22.242"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.QuestionExtractRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.QuestionExtractRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.QuestionExtractRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Request.QuestionExtractRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.QuestionExtractSubmitResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.QuestionExtractSubmitResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.QuestionExtractSubmitResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Beta.AIRoadshow.PCApi/Activity/GetExtractActivityInfoResult": {
+      "get": {
+        "tags": [
+          "Activity"
+        ],
+        "summary": "查询活动信息提取结果",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "traceparent",
+            "in": "header",
+            "description": "请求跟踪上下文（可选）",
+            "example": "00-2f952ba84d0dd059409abcb284564f8d-697f7525c5a6cee8-01"
+          },
+          {
+            "name": "tracestate",
+            "in": "header",
+            "description": "调用方appid及调用方当前机器ip（可选）",
+            "example": "client-app-id=web-airoadshow-pcapi,client-ip=10.10.22.242"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityExtractResultResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityExtractResultResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityExtractResultResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Beta.AIRoadshow.PCApi/Activity/GetExtractQuestionInfoResult": {
+      "get": {
+        "tags": [
+          "Activity"
+        ],
+        "summary": "查询题库信息提取结果",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "activityId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "traceparent",
+            "in": "header",
+            "description": "请求跟踪上下文（可选）",
+            "example": "00-41326e79e9da3e3bbf9d3f3ef17eac72-7b6b6da209087331-01"
+          },
+          {
+            "name": "tracestate",
+            "in": "header",
+            "description": "调用方appid及调用方当前机器ip（可选）",
+            "example": "client-app-id=web-airoadshow-pcapi,client-ip=10.10.22.242"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.QuestionExtractResultResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.QuestionExtractResultResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.QuestionExtractResultResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Beta.AIRoadshow.Entity.Dto.Request.AbilityDimensionRemoveRequestDto": {
+        "type": "object",
+        "properties": {
+          "abilityDimensionId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Request.AbilityDimensionSaveRequestDto": {
+        "type": "object",
+        "properties": {
+          "abilityDimensionName": {
+            "type": "string",
+            "nullable": true
+          },
+          "abilityDimensionDesc": {
+            "type": "string",
+            "nullable": true
+          },
+          "weight": {
+            "type": "number",
+            "format": "double"
+          },
+          "parentAbilityDimensionId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Request.AbilityDimensionUpdateRequestDto": {
+        "type": "object",
+        "properties": {
+          "abilityDimensionId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "abilityDimensionName": {
+            "type": "string",
+            "nullable": true
+          },
+          "abilityDimensionDesc": {
+            "type": "string",
+            "nullable": true
+          },
+          "weight": {
+            "type": "number",
+            "format": "double"
+          },
+          "parentAbilityDimensionId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Request.ActivityExtractRequestDto": {
+        "type": "object",
+        "properties": {
+          "files": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Request.ActivityUpdateRequestDto": {
+        "type": "object",
+        "properties": {
+          "activityId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "activityName": {
+            "type": "string",
+            "nullable": true
+          },
+          "activityDesc": {
+            "type": "string",
+            "nullable": true
+          },
+          "coreGoal": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerBackground": {
+            "type": "string",
+            "nullable": true
+          },
+          "startTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "recommendedDurationMinutes": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "publishStatus": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Request.BusinessStageSaveRequestDto": {
+        "type": "object",
+        "properties": {
+          "activityId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "stageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "stageDesc": {
+            "type": "string",
+            "nullable": true
+          },
+          "stageTask": {
+            "type": "string",
+            "nullable": true
+          },
+          "sortNo": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Request.BusinessStageUpdateRequestDto": {
+        "type": "object",
+        "properties": {
+          "stageId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "stageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "stageDesc": {
+            "type": "string",
+            "nullable": true
+          },
+          "stageTask": {
+            "type": "string",
+            "nullable": true
+          },
+          "sortNo": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Request.QuestionExtractRequestDto": {
+        "type": "object",
+        "properties": {
+          "activityId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Request.QuestionSaveRequestDto": {
+        "type": "object",
+        "properties": {
+          "activityId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "roleId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "stageId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "questionStem": {
+            "type": "string",
+            "nullable": true
+          },
+          "assessmentPoints": {
+            "type": "string",
+            "nullable": true
+          },
+          "isRequired": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Request.QuestionUpdateRequestDto": {
+        "type": "object",
+        "properties": {
+          "questionId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "roleId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "stageId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "questionStem": {
+            "type": "string",
+            "nullable": true
+          },
+          "assessmentPoints": {
+            "type": "string",
+            "nullable": true
+          },
+          "isRequired": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Request.RoleSaveRequestDto": {
+        "type": "object",
+        "properties": {
+          "activityId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "roleNickname": {
+            "type": "string",
+            "nullable": true
+          },
+          "jobTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectRole": {
+            "type": "string",
+            "nullable": true
+          },
+          "personality": {
+            "type": "string",
+            "nullable": true
+          },
+          "communicationStyle": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectRequirement": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Request.RoleUpdateRequestDto": {
+        "type": "object",
+        "properties": {
+          "roleId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "roleNickname": {
+            "type": "string",
+            "nullable": true
+          },
+          "jobTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectRole": {
+            "type": "string",
+            "nullable": true
+          },
+          "personality": {
+            "type": "string",
+            "nullable": true
+          },
+          "communicationStyle": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectRequirement": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Response.AbilityDimensionTreeResponseDto": {
+        "type": "object",
+        "properties": {
+          "abilityDimensionId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "abilityDimensionName": {
+            "type": "string",
+            "nullable": true
+          },
+          "abilityDimensionDesc": {
+            "type": "string",
+            "nullable": true
+          },
+          "weight": {
+            "type": "number",
+            "format": "double"
+          },
+          "parentAbilityDimensionId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Response.AbilityDimensionTreeResponseDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Response.ActivityBusinessStageResponseDto": {
+        "type": "object",
+        "properties": {
+          "stageId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "activityId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "stageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "stageDesc": {
+            "type": "string",
+            "nullable": true
+          },
+          "stageTask": {
+            "type": "string",
+            "nullable": true
+          },
+          "sortNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "questionCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Response.ActivityDetailActivityResponseDto": {
+        "type": "object",
+        "properties": {
+          "activityId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "custCompanyId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "activityName": {
+            "type": "string",
+            "nullable": true
+          },
+          "activityDesc": {
+            "type": "string",
+            "nullable": true
+          },
+          "coreGoal": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerBackground": {
+            "type": "string",
+            "nullable": true
+          },
+          "startTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "recommendedDurationMinutes": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "publishStatus": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Response.ActivityDetailBusinessStageResponseDto": {
+        "type": "object",
+        "properties": {
+          "stageId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "activityId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "stageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "stageDesc": {
+            "type": "string",
+            "nullable": true
+          },
+          "stageTask": {
+            "type": "string",
+            "nullable": true
+          },
+          "sortNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "questionCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Response.ActivityDetailResponseDto": {
+        "type": "object",
+        "properties": {
+          "activity": {
+            "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Response.ActivityDetailActivityResponseDto"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Response.ActivityDetailRoleResponseDto"
+            },
+            "nullable": true
+          },
+          "businessStages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Response.ActivityDetailBusinessStageResponseDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Response.ActivityDetailRoleResponseDto": {
+        "type": "object",
+        "properties": {
+          "roleId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "activityId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "roleNickname": {
+            "type": "string",
+            "nullable": true
+          },
+          "jobTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectRole": {
+            "type": "string",
+            "nullable": true
+          },
+          "personality": {
+            "type": "string",
+            "nullable": true
+          },
+          "communicationStyle": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectRequirement": {
+            "type": "string",
+            "nullable": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Response.ActivityExtractResultResponseDto": {
+        "type": "object",
+        "properties": {
+          "taskId": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "result": {
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Response.ActivityExtractSubmitResponseDto": {
+        "type": "object",
+        "properties": {
+          "taskId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Response.ActivityListItemResponseDto": {
+        "type": "object",
+        "properties": {
+          "activityId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "custCompanyId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "activityName": {
+            "type": "string",
+            "nullable": true
+          },
+          "activityDesc": {
+            "type": "string",
+            "nullable": true
+          },
+          "coreGoal": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerBackground": {
+            "type": "string",
+            "nullable": true
+          },
+          "startTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "recommendedDurationMinutes": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "publishStatus": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Response.ActivityListResponseDto": {
+        "type": "object",
+        "properties": {
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Response.ActivityListItemResponseDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Response.ActivityQuestionItemResponseDto": {
+        "type": "object",
+        "properties": {
+          "questionId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "activityId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "roleId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "roleNickname": {
+            "type": "string",
+            "nullable": true
+          },
+          "questionStem": {
+            "type": "string",
+            "nullable": true
+          },
+          "assessmentPoints": {
+            "type": "string",
+            "nullable": true
+          },
+          "isRequired": {
+            "type": "boolean"
+          },
+          "stageId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "stageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Response.ActivityQuestionPageResponseDto": {
+        "type": "object",
+        "properties": {
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Response.ActivityQuestionItemResponseDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Response.ActivityStatisticsResponseDto": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "publishedCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unpublishedCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "currentMonthNewCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Response.QuestionExtractResultResponseDto": {
+        "type": "object",
+        "properties": {
+          "taskId": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "result": {
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.AIRoadshow.Entity.Dto.Response.QuestionExtractSubmitResponseDto": {
+        "type": "object",
+        "properties": {
+          "taskId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.Framework.Entity.PagingInfo": {
+        "type": "object",
+        "properties": {
+          "currentPage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "records": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityDetailResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Response.ActivityDetailResponseDto"
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "page": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.PagingInfo"
+          },
+          "state": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.ResultState"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityExtractResultResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Response.ActivityExtractResultResponseDto"
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "page": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.PagingInfo"
+          },
+          "state": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.ResultState"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityExtractSubmitResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Response.ActivityExtractSubmitResponseDto"
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "page": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.PagingInfo"
+          },
+          "state": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.ResultState"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityListResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Response.ActivityListResponseDto"
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "page": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.PagingInfo"
+          },
+          "state": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.ResultState"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityQuestionPageResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Response.ActivityQuestionPageResponseDto"
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "page": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.PagingInfo"
+          },
+          "state": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.ResultState"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityStatisticsResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Response.ActivityStatisticsResponseDto"
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "page": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.PagingInfo"
+          },
+          "state": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.ResultState"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.QuestionExtractResultResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Response.QuestionExtractResultResponseDto"
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "page": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.PagingInfo"
+          },
+          "state": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.ResultState"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.Framework.Entity.ResponseInfo`1[[Beta.AIRoadshow.Entity.Dto.Response.QuestionExtractSubmitResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Response.QuestionExtractSubmitResponseDto"
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "page": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.PagingInfo"
+          },
+          "state": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.ResultState"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.Framework.Entity.ResponseInfo`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "boolean"
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "page": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.PagingInfo"
+          },
+          "state": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.ResultState"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.Framework.Entity.ResponseInfo`1[[System.Collections.Generic.IEnumerable`1[[Beta.AIRoadshow.Entity.Dto.Response.AbilityDimensionTreeResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Response.AbilityDimensionTreeResponseDto"
+            },
+            "nullable": true
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "page": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.PagingInfo"
+          },
+          "state": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.ResultState"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.Framework.Entity.ResponseInfo`1[[System.Collections.Generic.IEnumerable`1[[Beta.AIRoadshow.Entity.Dto.Response.ActivityBusinessStageResponseDto, Beta.AIRoadshow.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Beta.AIRoadshow.Entity.Dto.Response.ActivityBusinessStageResponseDto"
+            },
+            "nullable": true
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "page": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.PagingInfo"
+          },
+          "state": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.ResultState"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.Framework.Entity.ResponseInfo`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "page": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.PagingInfo"
+          },
+          "state": {
+            "$ref": "#/components/schemas/Beta.Framework.Entity.ResultState"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Beta.Framework.Entity.ResultState": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      }
+    }
+  }
+}"
+  uid=3_2 StaticText "美观输出"
+  uid=3_3 checkbox "美观输出"
